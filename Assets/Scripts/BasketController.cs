@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(CharacterController))]
 public class BasketController : MonoBehaviour
 {
     public float MoveSpeed = 10;
@@ -16,16 +17,30 @@ public class BasketController : MonoBehaviour
     private bool IsBallFlying = false;
     private float T = 0;
 
-   
+    private CharacterController characterController;
+
+    void Start()
+    {
+        characterController = GetComponent<CharacterController>();
+    }
+
     void Update()
     {
 
         
         Vector3 direction = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
-        transform.position += direction * MoveSpeed * Time.deltaTime;
-        transform.LookAt(transform.position + direction);
+        Vector3 move = direction * MoveSpeed * Time.deltaTime;
 
-        
+        //transform.position += direction * MoveSpeed * Time.deltaTime;
+        //transform.LookAt(transform.position + direction);
+        characterController.Move(move);
+
+        if (direction != Vector3.zero)
+        {
+            transform.forward = direction;
+        }
+
+
         if (IsBallInHands)
         {
 
