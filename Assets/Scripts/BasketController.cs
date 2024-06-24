@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class BasketController : MonoBehaviour
 {
-    public float MoveSpeed = 10;
+    public float MoveSpeed = 7;
     public Transform Ball;
     public Transform PosDribble;
     public Transform PosOverHead;
