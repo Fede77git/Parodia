@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Score : MonoBehaviour
 {
@@ -18,6 +19,15 @@ public class Score : MonoBehaviour
         scoreCount = 0;
         SetText();
         winText.text = "";
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene("NBA");
+
+        }
     }
     private void OnTriggerEnter(Collider otherCollider)
     {
