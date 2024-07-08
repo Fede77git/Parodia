@@ -55,7 +55,7 @@ public class BasketController : MonoBehaviour
         else if (playerNumber == PlayerNumber.Player2)
         {
             direction = new Vector3(Input.GetAxisRaw("Horizontal2"), 0, Input.GetAxisRaw("Vertical2"));
-            shootKey = KeyCode.B;
+            shootKey = KeyCode.M;
         }
 
         Vector3 move = direction * MoveSpeed * Time.deltaTime;
@@ -105,7 +105,7 @@ public class BasketController : MonoBehaviour
             {
                 IsBallFlying = false;
                 Ball.GetComponent<Rigidbody>().isKinematic = false;
-                //StartCoroutine(RespawnBallCoroutine());
+                StartCoroutine(RespawnBallCoroutine());
 
             }
         }
