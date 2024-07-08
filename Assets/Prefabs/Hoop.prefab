@@ -5471,7 +5471,7 @@ GameObject:
   - component: {fileID: 2945276607904133124}
   m_Layer: 0
   m_Name: ARO
-  m_TagString: Untagged
+  m_TagString: Basket
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

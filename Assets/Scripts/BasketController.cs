@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
@@ -23,63 +24,38 @@ public class BasketController : MonoBehaviour
     private float T = 0;
 
     private CharacterController characterController;
+    private Collider ballCollider;
+    private Collider playerCollider;
+    private Vector3 initialBallPosition;
+
+
+
 
     void Start()
     {
         characterController = GetComponent<CharacterController>();
+        ballCollider = Ball.GetComponent<Collider>();
+        playerCollider = GetComponent<Collider>();
+        initialBallPosition = Ball.position;
+
+
     }
 
     void Update()
     {
 
-
         Vector3 direction = Vector3.zero;
+        KeyCode shootKey = KeyCode.None;
 
         if (playerNumber == PlayerNumber.Player1)
         {
             direction = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
-
-            if (Input.GetKey(KeyCode.V))
-            {
-                Ball.position = PosOverHead.position;
-                Arms.localEulerAngles = Vector3.right * 180;
-                transform.LookAt(Target.parent.position);
-            }
-            else
-            {
-                Ball.position = PosDribble.position + Vector3.up * Mathf.Abs(Mathf.Sin(Time.time * 5));
-                Arms.localEulerAngles = Vector3.right * 0;
-            }
-
-            if (Input.GetKeyUp(KeyCode.V))
-            {
-                IsBallInHands = false;
-                IsBallFlying = true;
-                T = 0;
-            }
+            shootKey = KeyCode.V;
         }
         else if (playerNumber == PlayerNumber.Player2)
         {
             direction = new Vector3(Input.GetAxisRaw("Horizontal2"), 0, Input.GetAxisRaw("Vertical2"));
-
-            if (Input.GetKey(KeyCode.B))
-            {
-                Ball.position = PosOverHead.position;
-                Arms.localEulerAngles = Vector3.right * 180;
-                transform.LookAt(Target.parent.position);
-            }
-            else
-            {
-                Ball.position = PosDribble.position + Vector3.up * Mathf.Abs(Mathf.Sin(Time.time * 5));
-                Arms.localEulerAngles = Vector3.right * 0;
-            }
-
-            if (Input.GetKeyUp(KeyCode.B))
-            {
-                IsBallInHands = false;
-                IsBallFlying = true;
-                T = 0;
-            }
+            shootKey = KeyCode.B;
         }
 
         Vector3 move = direction * MoveSpeed * Time.deltaTime;
@@ -88,6 +64,28 @@ public class BasketController : MonoBehaviour
         if (direction != Vector3.zero)
         {
             transform.forward = direction;
+        }
+
+        if (IsBallInHands)
+        {
+            if (Input.GetKey(shootKey))
+            {
+                Ball.position = PosOverHead.position;
+                Arms.localEulerAngles = Vector3.right * 180;
+                transform.LookAt(Target.parent.position);
+            }
+            else
+            {
+                Ball.position = PosDribble.position + Vector3.up * Mathf.Abs(Mathf.Sin(Time.time * 5));
+                Arms.localEulerAngles = Vector3.right * 0;
+            }
+
+            if (Input.GetKeyUp(shootKey))
+            {
+                IsBallInHands = false;
+                IsBallFlying = true;
+                T = 0;
+            }
         }
 
         if (IsBallFlying)
@@ -107,16 +105,42 @@ public class BasketController : MonoBehaviour
             {
                 IsBallFlying = false;
                 Ball.GetComponent<Rigidbody>().isKinematic = false;
+                //StartCoroutine(RespawnBallCoroutine());
+
             }
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!IsBallInHands && !IsBallFlying)
+        if (!IsBallInHands && !IsBallFlying && other.CompareTag("Ball"))
         {
             IsBallInHands = true;
             Ball.GetComponent<Rigidbody>().isKinematic = true;
+            ballCollider.enabled = false;
+            playerCollider.enabled = false;
+            StartCoroutine(EnableCollidersAfterDelay());
         }
+    }
+
+    private IEnumerator RespawnBallCoroutine()
+    {
+        yield return new WaitForSeconds(0.1f); 
+        ballCollider.enabled = false;
+        playerCollider.enabled = false;
+
+
+        //Ball.position = initialBallPosition;
+
+        yield return new WaitForSeconds(0.1f); 
+        ballCollider.enabled = true; 
+        playerCollider.enabled = true; 
+    }
+
+    private IEnumerator EnableCollidersAfterDelay()
+    {
+        yield return new WaitForSeconds(0.1f);
+        ballCollider.enabled = true;
+        playerCollider.enabled = true;
     }
 }
