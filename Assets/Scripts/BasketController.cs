@@ -36,7 +36,7 @@ public class BasketController : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         ballCollider = Ball.GetComponent<Collider>();
         playerCollider = GetComponent<Collider>();
-        initialBallPosition = Ball.position;
+        //initialBallPosition = Ball.position;
 
 
     }
@@ -105,7 +105,7 @@ public class BasketController : MonoBehaviour
             {
                 IsBallFlying = false;
                 Ball.GetComponent<Rigidbody>().isKinematic = false;
-                StartCoroutine(RespawnBallCoroutine());
+                Ball.GetComponent<Rigidbody>().useGravity = true;
 
             }
         }
@@ -117,25 +117,28 @@ public class BasketController : MonoBehaviour
         {
             IsBallInHands = true;
             Ball.GetComponent<Rigidbody>().isKinematic = true;
+            Ball.GetComponent<Rigidbody>().useGravity = false;
+
             ballCollider.enabled = false;
             playerCollider.enabled = false;
+            Ball.position = PosDribble.position;
             StartCoroutine(EnableCollidersAfterDelay());
         }
     }
 
-    private IEnumerator RespawnBallCoroutine()
-    {
-        yield return new WaitForSeconds(0.1f); 
-        ballCollider.enabled = false;
-        playerCollider.enabled = false;
+    //private IEnumerator RespawnBallCoroutine()
+    //{
+    //    yield return new WaitForSeconds(0.1f); 
+    //    ballCollider.enabled = false;
+    //    playerCollider.enabled = false;
 
 
-        //Ball.position = initialBallPosition;
+    //    //Ball.position = initialBallPosition;
 
-        yield return new WaitForSeconds(0.1f); 
-        ballCollider.enabled = true; 
-        playerCollider.enabled = true; 
-    }
+    //    yield return new WaitForSeconds(0.1f); 
+    //    ballCollider.enabled = true; 
+    //    playerCollider.enabled = true; 
+    //}
 
     private IEnumerator EnableCollidersAfterDelay()
     {

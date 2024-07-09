@@ -1,11 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Score : MonoBehaviour
+public class ScorePlayer2 : MonoBehaviour
 {
     public GameObject effectObj;
     private int scoreCount;
@@ -28,18 +27,19 @@ public class Score : MonoBehaviour
             SceneManager.LoadScene("NBA");
             Time.timeScale = 1f;
 
+
         }
     }
     private void OnTriggerEnter(Collider otherCollider)
     {
         if (otherCollider.gameObject.CompareTag("Ball"))
         {
-            effectObj.SetActive (true);
+            effectObj.SetActive(true);
 
-            
+
             scoreCount = scoreCount + 1;
             SetText();
-           
+
 
             StartCoroutine(DisableEffect());
         }
@@ -49,10 +49,10 @@ public class Score : MonoBehaviour
     private void SetText()
     {
         scoreText.text = " " + scoreCount.ToString();
-        if (scoreCount >= 5) 
+        if (scoreCount >= 5)
         {
 
-            winText.text = "Green player wins!";
+            winText.text = "Purple player wins!";
             Debug.Log("WIN");
             Time.timeScale = 0f;
 

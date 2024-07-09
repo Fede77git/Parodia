@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &87309283 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 918719775427668538, guid: 7b4947dd389d9de40b6f4b7f7ffed71b, type: 3}
+  m_PrefabInstance: {fileID: 641006730}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &313084234
 GameObject:
   m_ObjectHideFlags: 0
@@ -608,7 +613,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -687.0972, w: 0}
+  m_margin: {x: 0, y: 0, z: -1021.8017, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -685,7 +690,8 @@ PrefabInstance:
       propertyPath: scoreText
       value: 
       objectReference: {fileID: 1053847546}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1637705836682766208, guid: 7b4947dd389d9de40b6f4b7f7ffed71b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7b4947dd389d9de40b6f4b7f7ffed71b, type: 3}
 --- !u!4 &641006731 stripped
 Transform:
@@ -907,7 +913,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -687.0972, w: 0}
+  m_margin: {x: 0, y: 0, z: -1064.3038, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1661,6 +1667,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1053847544}
   m_CullTransparentMesh: 1
+--- !u!1 &1131045171 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9206016319091048689, guid: 7b4947dd389d9de40b6f4b7f7ffed71b, type: 3}
+  m_PrefabInstance: {fileID: 641006730}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1131045175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131045171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd83fa578725fc64d8efb2fe8d19cd26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectObj: {fileID: 87309283}
+  scoreText: {fileID: 1053847546}
+  winText: {fileID: 580168426}
 --- !u!1 &1257422731 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6321757602030655, guid: 7b4947dd389d9de40b6f4b7f7ffed71b, type: 3}
@@ -6829,7 +6855,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1024222598731262803, guid: fe98562c6c43ff6439affe1cd2510c35, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.0812736
+      value: -1.35
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe98562c6c43ff6439affe1cd2510c35, type: 3}
@@ -7064,7 +7090,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1778994612}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.874433, y: 0.16095181, z: -0.80533123}
+  m_LocalPosition: {x: -4.874433, y: 2, z: -0.80533123}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7593,7 +7619,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4961269351953417057, guid: a4a73fa9f26aa9e4ea94bd6e498d6d97, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2
+      value: 1.65
       objectReference: {fileID: 0}
     - target: {fileID: 4961269351953417057, guid: a4a73fa9f26aa9e4ea94bd6e498d6d97, type: 3}
       propertyPath: m_LocalPosition.z
