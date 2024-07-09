@@ -26,7 +26,7 @@ public class BasketController : MonoBehaviour
     private CharacterController characterController;
     private Collider ballCollider;
     private Collider playerCollider;
-    private Vector3 initialBallPosition;
+    //private Vector3 initialBallPosition;
 
 
 
