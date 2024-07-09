@@ -29,6 +29,10 @@ public class Score : MonoBehaviour
             Time.timeScale = 1f;
 
         }
+        else if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
     }
     private void OnTriggerEnter(Collider otherCollider)
     {
