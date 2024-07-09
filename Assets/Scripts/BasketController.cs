@@ -19,7 +19,7 @@ public class BasketController : MonoBehaviour
     public Transform Target;
 
    
-    private bool IsBallInHands = true;
+    private bool IsBallInHands = false;
     private bool IsBallFlying = false;
     private float T = 0;
 
