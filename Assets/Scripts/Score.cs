@@ -11,9 +11,14 @@ public class Score : MonoBehaviour
     private int scoreCount;
     public TMP_Text scoreText;
     public TMP_Text winText;
-   
+
+    AudioManager audioManager;
 
 
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
     private void Start()
     {
         effectObj.SetActive(false);
@@ -40,7 +45,8 @@ public class Score : MonoBehaviour
         {
             effectObj.SetActive (true);
 
-            
+            audioManager.PlaySFX(audioManager.ballNet);
+
             scoreCount = scoreCount + 1;
             SetText();
            

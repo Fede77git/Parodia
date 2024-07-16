@@ -11,7 +11,11 @@ public class ScorePlayer2 : MonoBehaviour
     public TMP_Text scoreText;
     public TMP_Text winText;
 
-
+    AudioManager audioManager;
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
     private void Start()
     {
         effectObj.SetActive(false);
@@ -35,6 +39,7 @@ public class ScorePlayer2 : MonoBehaviour
         if (otherCollider.gameObject.CompareTag("Ball"))
         {
             effectObj.SetActive(true);
+            audioManager.PlaySFX(audioManager.ballNet);
 
 
             scoreCount = scoreCount + 1;
