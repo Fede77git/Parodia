@@ -48,7 +48,7 @@ public class ScorePlayer2 : MonoBehaviour
 
     private void SetText()
     {
-        scoreText.text = " " + scoreCount.ToString();
+        scoreText.text = "" + scoreCount.ToString();
         if (scoreCount >= 5)
         {
 

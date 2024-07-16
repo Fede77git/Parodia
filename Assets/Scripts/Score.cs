@@ -52,7 +52,7 @@ public class Score : MonoBehaviour
 
     private void SetText()
     {
-        scoreText.text = " " + scoreCount.ToString();
+        scoreText.text = "" + scoreCount.ToString();
         if (scoreCount >= 5) 
         {
 
