@@ -11,6 +11,7 @@ public class Score : MonoBehaviour
     private int scoreCount;
     public TMP_Text scoreText;
     public TMP_Text winText;
+   
 
 
     private void Start()
@@ -29,7 +30,9 @@ public class Score : MonoBehaviour
             Time.timeScale = 1f;
 
         }
+
         
+
     }
     private void OnTriggerEnter(Collider otherCollider)
     {
