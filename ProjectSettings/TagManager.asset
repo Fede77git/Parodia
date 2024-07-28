@@ -8,6 +8,7 @@ TagManager:
   - PowerUp1
   - Basket
   - Audio
+  - Chicken
   layers:
   - Default
   - TransparentFX
