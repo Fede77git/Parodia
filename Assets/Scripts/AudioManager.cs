@@ -24,9 +24,16 @@ public class AudioManager : MonoBehaviour
         sfxSource.PlayOneShot(clip);
     }
 
-    // Update is called once per frame
-    void Update()
+    
+    public void OnMusic()
     {
-        
+        musicSource.Play();
     }
+
+    public void OffMusic()
+    {
+        musicSource.Stop();
+
+    }
+
 }
