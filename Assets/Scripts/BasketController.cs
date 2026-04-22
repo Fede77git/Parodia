@@ -58,8 +58,9 @@ public class BasketController : MonoBehaviour
             shootKey = KeyCode.M;
         }
 
-        Vector3 move = direction * MoveSpeed * Time.deltaTime;
-        characterController.Move(move);
+        Vector3 move = direction * MoveSpeed;
+        move.y = -9.81f; // Aplicamos gravedad constante hacia abajo
+        characterController.Move(move * Time.deltaTime);
 
         if (direction != Vector3.zero)
         {
@@ -106,6 +107,7 @@ public class BasketController : MonoBehaviour
                 IsBallFlying = false;
                 Ball.GetComponent<Rigidbody>().isKinematic = false;
                 Ball.GetComponent<Rigidbody>().useGravity = true;
+                ballCollider.isTrigger = false; // Reactivamos colisiones físicas al terminar el tiro
 
             }
         }
@@ -115,35 +117,23 @@ public class BasketController : MonoBehaviour
     {
         if (!IsBallInHands && !IsBallFlying && other.CompareTag("Ball"))
         {
+            // Forzar a los demás jugadores a soltar la pelota si la tenían
+            BasketController[] allPlayers = FindObjectsOfType<BasketController>();
+            foreach (BasketController player in allPlayers)
+            {
+                player.IsBallInHands = false;
+                player.IsBallFlying = false;
+            }
+
             IsBallInHands = true;
             Ball.GetComponent<Rigidbody>().isKinematic = true;
             Ball.GetComponent<Rigidbody>().useGravity = false;
 
-            ballCollider.enabled = false;
-            playerCollider.enabled = false;
+            // Hacer la pelota Trigger evita que actúe como un obstáculo físico (evita flotar),
+            // pero permite que otro jugador pueda tocarla para robarla.
+            ballCollider.isTrigger = true;
+            
             Ball.position = PosDribble.position;
-            StartCoroutine(EnableCollidersAfterDelay());
         }
-    }
-
-    //private IEnumerator RespawnBallCoroutine()
-    //{
-    //    yield return new WaitForSeconds(0.1f); 
-    //    ballCollider.enabled = false;
-    //    playerCollider.enabled = false;
-
-
-    //    //Ball.position = initialBallPosition;
-
-    //    yield return new WaitForSeconds(0.1f); 
-    //    ballCollider.enabled = true; 
-    //    playerCollider.enabled = true; 
-    //}
-
-    private IEnumerator EnableCollidersAfterDelay()
-    {
-        yield return new WaitForSeconds(0.1f);
-        ballCollider.enabled = true;
-        playerCollider.enabled = true;
     }
 }
