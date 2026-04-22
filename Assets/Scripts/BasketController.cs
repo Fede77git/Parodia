@@ -31,7 +31,8 @@ public class BasketController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        rb.constraints = RigidbodyConstraints.FreezeRotation; 
+
+        rb.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY; 
         
         ballCollider = Ball.GetComponent<Collider>();
         playerCollider = GetComponent<Collider>();
@@ -52,9 +53,13 @@ public class BasketController : MonoBehaviour
 
     void Update()
     {
-        if (moveAction != null && shootAction != null)
+        if (moveAction != null && moveAction.action != null)
         {
             moveInput = moveAction.action.ReadValue<Vector2>();
+        }
+        
+        if (shootAction != null && shootAction.action != null)
+        {
             isShooting = shootAction.action.IsPressed();
         }
 
@@ -64,7 +69,12 @@ public class BasketController : MonoBehaviour
             {
                 Ball.position = PosOverHead.position;
                 Arms.localEulerAngles = Vector3.right * 180;
-                transform.LookAt(Target.parent.position);
+                
+                // Hacemos que mire al target pero manteniendo su propia altura Y.
+                // Así evitamos que la cápsula se incline hacia arriba o abajo metiéndose en la tierra.
+                Vector3 lookPos = Target.parent.position;
+                lookPos.y = transform.position.y;
+                transform.LookAt(lookPos);
             }
             else
             {
@@ -108,8 +118,17 @@ public class BasketController : MonoBehaviour
 
     void FixedUpdate()
     {
+        // Obtenemos hacia dónde mira la cámara para que los controles coincidan con tu pantalla
+        Vector3 camForward = Camera.main.transform.forward;
+        Vector3 camRight = Camera.main.transform.right;
 
-        Vector3 direction = new Vector3(moveInput.x, 0, moveInput.y);
+        camForward.y = 0;
+        camRight.y = 0;
+        camForward.Normalize();
+        camRight.Normalize();
+
+        // Arriba/Abajo mueven en el eje de la cámara, Izquierda/Derecha en el eje lateral
+        Vector3 direction = camForward * moveInput.y + camRight * moveInput.x;
         
         Vector3 targetVelocity = direction * MoveSpeed;
         targetVelocity.y = rb.velocity.y; 
