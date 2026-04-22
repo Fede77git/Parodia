@@ -10437,13 +10437,25 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 1167510352632870599, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
+      propertyPath: m_DefaultActionMap
+      value: 53902570-1aa8-4b5d-b3cd-34ec00ee4ea5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1167510352632870599, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
+      propertyPath: m_DefaultControlScheme
+      value: Teclado1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1167510352632870599, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
+      propertyPath: m_NeverAutoSwitchControlSchemes
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1217879839389354770, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
       propertyPath: m_UseGravity
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1217879839389354770, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
       propertyPath: m_IsKinematic
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2623954847099252067, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
       propertyPath: m_Layer
@@ -10470,9 +10482,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1912483623}
     - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
+      propertyPath: moveAction
+      value: 
+      objectReference: {fileID: -2485130728304857325, guid: 778c679f2fe2f5c4486270cb3773159f, type: 3}
+    - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
       propertyPath: PosOverHead
       value: 
       objectReference: {fileID: 1912483622}
+    - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
+      propertyPath: shootAction
+      value: 
+      objectReference: {fileID: 2056189224599033838, guid: 778c679f2fe2f5c4486270cb3773159f, type: 3}
     - target: {fileID: 4994975396451487339, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -10701,13 +10721,21 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 1167510352632870599, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
+      propertyPath: m_DefaultControlScheme
+      value: Teclado2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1167510352632870599, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
+      propertyPath: m_NeverAutoSwitchControlSchemes
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1217879839389354770, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
       propertyPath: m_UseGravity
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1217879839389354770, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
       propertyPath: m_IsKinematic
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2623954847099252067, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
       propertyPath: m_Layer
@@ -10734,9 +10762,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1993095983}
     - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
+      propertyPath: moveAction
+      value: 
+      objectReference: {fileID: 5968635901674791707, guid: 778c679f2fe2f5c4486270cb3773159f, type: 3}
+    - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
       propertyPath: PosOverHead
       value: 
       objectReference: {fileID: 1993095982}
+    - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
+      propertyPath: shootAction
+      value: 
+      objectReference: {fileID: 3942333776781788182, guid: 778c679f2fe2f5c4486270cb3773159f, type: 3}
     - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
       propertyPath: playerNumber
       value: 1

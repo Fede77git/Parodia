@@ -1,75 +1,66 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
+using UnityEngine.InputSystem; 
 
-[RequireComponent(typeof(CharacterController))]
+[RequireComponent(typeof(Rigidbody))] 
 public class BasketController : MonoBehaviour
 {
-
-    public enum PlayerNumber { Player1, Player2 }
-    public PlayerNumber playerNumber;
-
-
     public float MoveSpeed = 7;
     public Transform Ball;
     public Transform PosDribble;
     public Transform PosOverHead;
     public Transform Arms;
     public Transform Target;
-
    
     private bool IsBallInHands = false;
     private bool IsBallFlying = false;
     private float T = 0;
 
-    private CharacterController characterController;
+    private Rigidbody rb;
     private Collider ballCollider;
     private Collider playerCollider;
-    //private Vector3 initialBallPosition;
 
-
-
+    public InputActionReference moveAction;
+    public InputActionReference shootAction;
+   
+    private Vector2 moveInput;
+    private bool isShooting;
+    private bool wasShooting;
 
     void Start()
     {
-        characterController = GetComponent<CharacterController>();
+        rb = GetComponent<Rigidbody>();
+        rb.constraints = RigidbodyConstraints.FreezeRotation; 
+        
         ballCollider = Ball.GetComponent<Collider>();
         playerCollider = GetComponent<Collider>();
-        //initialBallPosition = Ball.position;
 
+    }
 
+    private void OnEnable()
+    {
+        if (moveAction != null) moveAction.action.Enable();
+        if (shootAction != null) shootAction.action.Enable();
+    }
+
+    private void OnDisable()
+    {
+        if (moveAction != null) moveAction.action.Disable();
+        if (shootAction != null) shootAction.action.Disable();
     }
 
     void Update()
     {
-
-        Vector3 direction = Vector3.zero;
-        KeyCode shootKey = KeyCode.None;
-
-        if (playerNumber == PlayerNumber.Player1)
+        if (moveAction != null && shootAction != null)
         {
-            direction = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
-            shootKey = KeyCode.V;
-        }
-        else if (playerNumber == PlayerNumber.Player2)
-        {
-            direction = new Vector3(Input.GetAxisRaw("Horizontal2"), 0, Input.GetAxisRaw("Vertical2"));
-            shootKey = KeyCode.M;
-        }
-
-        Vector3 move = direction * MoveSpeed;
-        move.y = -9.81f; // Aplicamos gravedad constante hacia abajo
-        characterController.Move(move * Time.deltaTime);
-
-        if (direction != Vector3.zero)
-        {
-            transform.forward = direction;
+            moveInput = moveAction.action.ReadValue<Vector2>();
+            isShooting = shootAction.action.IsPressed();
         }
 
         if (IsBallInHands)
         {
-            if (Input.GetKey(shootKey))
+            if (isShooting)
             {
                 Ball.position = PosOverHead.position;
                 Arms.localEulerAngles = Vector3.right * 180;
@@ -81,13 +72,16 @@ public class BasketController : MonoBehaviour
                 Arms.localEulerAngles = Vector3.right * 0;
             }
 
-            if (Input.GetKeyUp(shootKey))
+         
+            if (wasShooting && !isShooting)
             {
                 IsBallInHands = false;
                 IsBallFlying = true;
                 T = 0;
             }
         }
+
+        wasShooting = isShooting; 
 
         if (IsBallFlying)
         {
@@ -107,9 +101,25 @@ public class BasketController : MonoBehaviour
                 IsBallFlying = false;
                 Ball.GetComponent<Rigidbody>().isKinematic = false;
                 Ball.GetComponent<Rigidbody>().useGravity = true;
-                ballCollider.isTrigger = false; // Reactivamos colisiones físicas al terminar el tiro
-
+                ballCollider.isTrigger = false; 
             }
+        }
+    }
+
+    void FixedUpdate()
+    {
+
+        Vector3 direction = new Vector3(moveInput.x, 0, moveInput.y);
+        
+        Vector3 targetVelocity = direction * MoveSpeed;
+        targetVelocity.y = rb.velocity.y; 
+        rb.velocity = targetVelocity;
+
+        if (direction != Vector3.zero)
+        {
+
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+            rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotation, Time.fixedDeltaTime * 15f));
         }
     }
 
@@ -117,7 +127,6 @@ public class BasketController : MonoBehaviour
     {
         if (!IsBallInHands && !IsBallFlying && other.CompareTag("Ball"))
         {
-            // Forzar a los demás jugadores a soltar la pelota si la tenían
             BasketController[] allPlayers = FindObjectsOfType<BasketController>();
             foreach (BasketController player in allPlayers)
             {
@@ -129,8 +138,6 @@ public class BasketController : MonoBehaviour
             Ball.GetComponent<Rigidbody>().isKinematic = true;
             Ball.GetComponent<Rigidbody>().useGravity = false;
 
-            // Hacer la pelota Trigger evita que actúe como un obstáculo físico (evita flotar),
-            // pero permite que otro jugador pueda tocarla para robarla.
             ballCollider.isTrigger = true;
             
             Ball.position = PosDribble.position;
