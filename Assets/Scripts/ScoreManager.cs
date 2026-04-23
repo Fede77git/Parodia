@@ -17,12 +17,16 @@ public class ScoreManager : MonoBehaviour
 
     private int scoreP1 = 0;
     private int scoreP2 = 0;
-  
+
+    public static ScoreManager instance;
+    public static bool isGameOver = false;
 
     AudioManager audioManager;
 
     private void Awake()
     {
+        instance = this;
+        isGameOver = false;
         GameObject audioObj = GameObject.FindGameObjectWithTag("Audio");
         if(audioObj != null) audioManager = audioObj.GetComponent<AudioManager>();
     }
@@ -75,13 +79,35 @@ public class ScoreManager : MonoBehaviour
         if (scoreP1 >= 5)
         {
             winText.text = "Green chicken wins!";
+            isGameOver = true;
             Time.timeScale = 0f;
         }
         else if (scoreP2 >= 5)
         {
             winText.text = "Purple chicken wins!";
+            isGameOver = true;
             Time.timeScale = 0f;
         }
+    }
+
+    public void CheckTimeOutWinner()
+    {
+        if (isGameOver) return;
+        isGameOver = true;
+
+        if (scoreP1 > scoreP2)
+        {
+            winText.text = "Green chicken wins!";
+        }
+        else if (scoreP2 > scoreP1)
+        {
+            winText.text = "Purple chicken wins!";
+        }
+        else
+        {
+            winText.text = "It's a Draw!";
+        }
+        Time.timeScale = 0f;
     }
 
     private IEnumerator DisableEffect()

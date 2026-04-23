@@ -43,8 +43,14 @@ public class ControlTime : MonoBehaviour
     private void OnEnd()
     {
         print("End");
-        Time.timeScale = 0f;
-
+        if (ScoreManager.instance != null)
+        {
+            ScoreManager.instance.CheckTimeOutWinner();
+        }
+        else
+        {
+            Time.timeScale = 0f;
+        }
     }
 
 }

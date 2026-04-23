@@ -17,6 +17,8 @@ public class PauseMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            if (ScoreManager.isGameOver) return; // Si el juego terminó, ignorar pausa
+
             if (isPaused)
             {
                 ResumeGame();
