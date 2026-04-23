@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem; 
 
-[RequireComponent(typeof(Rigidbody))] 
+[RequireComponent(typeof(Rigidbody))]
 public class BasketController : MonoBehaviour
 {
     public float MoveSpeed = 7;
+    public int playerID = 1;
     public Transform Ball;
     public Transform PosDribble;
     public Transform PosOverHead;
@@ -155,6 +156,10 @@ public class BasketController : MonoBehaviour
             }
 
             IsBallInHands = true;
+            
+            BallInfo bInfo = Ball.GetComponent<BallInfo>();
+            if (bInfo != null) bInfo.lastPlayerID = this.playerID;
+
             Ball.GetComponent<Rigidbody>().isKinematic = true;
             Ball.GetComponent<Rigidbody>().useGravity = false;
 
