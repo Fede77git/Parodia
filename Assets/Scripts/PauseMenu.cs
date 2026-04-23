@@ -12,12 +12,12 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(false);
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (ScoreManager.isGameOver) return; // Si el juego terminó, ignorar pausa
+            if (ScoreManager.isGameOver) return; 
 
             if (isPaused)
             {
