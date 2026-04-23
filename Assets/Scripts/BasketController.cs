@@ -27,6 +27,7 @@ public class BasketController : MonoBehaviour
     private Vector2 moveInput;
     private bool isShooting;
     private bool wasShooting;
+    private Vector3 startFlyPos;
 
     void Start()
     {
@@ -71,7 +72,7 @@ public class BasketController : MonoBehaviour
                 Arms.localEulerAngles = Vector3.right * 180;
                 
                
-                Vector3 lookPos = Target.parent.position;
+                Vector3 lookPos = Target.position;
                 lookPos.y = transform.position.y;
                 transform.LookAt(lookPos);
             }
@@ -87,6 +88,7 @@ public class BasketController : MonoBehaviour
                 IsBallInHands = false;
                 IsBallFlying = true;
                 T = 0;
+                startFlyPos = PosOverHead.position;
             }
         }
 
@@ -98,7 +100,7 @@ public class BasketController : MonoBehaviour
             float duration = 0.66f;
             float t01 = T / duration;
 
-            Vector3 A = PosOverHead.position;
+            Vector3 A = startFlyPos;
             Vector3 B = Target.position;
             Vector3 pos = Vector3.Lerp(A, B, t01);
             Vector3 arc = Vector3.up * 5 * Mathf.Sin(t01 * 3.14f);
