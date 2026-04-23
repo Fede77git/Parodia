@@ -158,7 +158,11 @@ public class BasketController : MonoBehaviour
             IsBallInHands = true;
             
             BallInfo bInfo = Ball.GetComponent<BallInfo>();
-            if (bInfo != null) bInfo.lastPlayerID = this.playerID;
+            if (bInfo != null) 
+            {
+                bInfo.lastPlayerID = this.playerID;
+                bInfo.hasScored = false; 
+            }
 
             Ball.GetComponent<Rigidbody>().isKinematic = true;
             Ball.GetComponent<Rigidbody>().useGravity = false;

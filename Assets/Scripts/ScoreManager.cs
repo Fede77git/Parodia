@@ -47,24 +47,26 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider otherCollider)
+    private void OnTriggerStay(Collider otherCollider)
     {
         if (otherCollider.gameObject.CompareTag("Ball"))
         {
+            BallInfo ballInfo = otherCollider.GetComponent<BallInfo>();
+            if (ballInfo == null || ballInfo.hasScored) return;
+
+
+            if (ballInfo.realVelocity.y >= 0)
+            {
+                return; 
+            }
+
+            ballInfo.hasScored = true; 
+
             if (effectObj != null) effectObj.SetActive(true);
             if (audioManager != null) audioManager.PlaySFX(audioManager.ballNet);
 
-            BallInfo ballInfo = otherCollider.GetComponent<BallInfo>();
-            if (ballInfo != null)
-            {
-                if (ballInfo.lastPlayerID == 1) scoreP1++;
-                else if (ballInfo.lastPlayerID == 2) scoreP2++;
-    
-            }
-            else 
-            {
-                Debug.LogWarning("missing script ball");
-            }
+            if (ballInfo.lastPlayerID == 1) scoreP1++;
+            else if (ballInfo.lastPlayerID == 2) scoreP2++;
 
             UpdateUI();
             StartCoroutine(DisableEffect());
