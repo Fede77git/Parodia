@@ -70,8 +70,7 @@ public class BasketController : MonoBehaviour
                 Ball.position = PosOverHead.position;
                 Arms.localEulerAngles = Vector3.right * 180;
                 
-                // Hacemos que mire al target pero manteniendo su propia altura Y.
-                // Así evitamos que la cápsula se incline hacia arriba o abajo metiéndose en la tierra.
+               
                 Vector3 lookPos = Target.parent.position;
                 lookPos.y = transform.position.y;
                 transform.LookAt(lookPos);
@@ -118,7 +117,7 @@ public class BasketController : MonoBehaviour
 
     void FixedUpdate()
     {
-        // Obtenemos hacia dónde mira la cámara para que los controles coincidan con tu pantalla
+
         Vector3 camForward = Camera.main.transform.forward;
         Vector3 camRight = Camera.main.transform.right;
 
@@ -127,7 +126,7 @@ public class BasketController : MonoBehaviour
         camForward.Normalize();
         camRight.Normalize();
 
-        // Arriba/Abajo mueven en el eje de la cámara, Izquierda/Derecha en el eje lateral
+
         Vector3 direction = camForward * moveInput.y + camRight * moveInput.x;
         
         Vector3 targetVelocity = direction * MoveSpeed;
