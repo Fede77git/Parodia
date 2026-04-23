@@ -74,12 +74,12 @@ public class ScoreManager : MonoBehaviour
 
         if (scoreP1 >= 5)
         {
-            winText.text = "Green player wins!";
+            winText.text = "Green chicken wins!";
             Time.timeScale = 0f;
         }
         else if (scoreP2 >= 5)
         {
-            winText.text = "Purple player wins!";
+            winText.text = "Purple chicken wins!";
             Time.timeScale = 0f;
         }
     }
