@@ -2248,7 +2248,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400020, guid: c685db5bd3a0f9b4d8ddb667b78d772f, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 400020, guid: c685db5bd3a0f9b4d8ddb667b78d772f, type: 3}
       propertyPath: m_LocalScale.x
@@ -11305,6 +11305,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 1149551192565000717, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f124c6c7cb85d9647967d3de2253e1cf, type: 2}
+    - target: {fileID: 1149551192565000717, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: f124c6c7cb85d9647967d3de2253e1cf, type: 2}
     - target: {fileID: 1167510352632870599, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
       propertyPath: m_DefaultActionMap
       value: 53902570-1aa8-4b5d-b3cd-34ec00ee4ea5
@@ -11570,6 +11578,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 1149551192565000717, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1542edc58e4337b449878b792c09a5c9, type: 2}
+    - target: {fileID: 1149551192565000717, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1542edc58e4337b449878b792c09a5c9, type: 2}
     - target: {fileID: 1167510352632870599, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
       propertyPath: m_DefaultControlScheme
       value: Teclado2
