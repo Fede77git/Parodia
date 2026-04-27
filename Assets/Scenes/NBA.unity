@@ -1273,7 +1273,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Arrows   to Move
 
-    M             to Shoot'
+    M             to Shoot C to Knock'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 20b381ffd40ba5a46955b04c8cca61bd, type: 2}
   m_sharedMaterial: {fileID: -1095915331583711665, guid: 20b381ffd40ba5a46955b04c8cca61bd, type: 2}
@@ -1336,7 +1336,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 0.016059041, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1669,8 +1669,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 507228743}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0.227, z: 0}
+  m_LocalScale: {x: 1, y: 1.5246, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 901607572}
@@ -1958,7 +1958,7 @@ Transform:
   m_GameObject: {fileID: 567759600}
   m_LocalRotation: {x: -0, y: -0.49358267, z: -0, w: 0.86969894}
   m_LocalPosition: {x: -13.63, y: 5.98, z: 8.94}
-  m_LocalScale: {x: 3.9499052, y: 3.5579026, z: 3.2324}
+  m_LocalScale: {x: 6.3526697, y: 3.5579026, z: 3.2324}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1938927744}
@@ -3013,7 +3013,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0.234}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &852939043
@@ -3210,7 +3210,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0.246}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &860921514
@@ -3235,7 +3235,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'W A S D  to Move
 
-    V            to Shoot'
+    V            to Shoot N to Knock'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 20b381ffd40ba5a46955b04c8cca61bd, type: 2}
   m_sharedMaterial: {fileID: -1095915331583711665, guid: 20b381ffd40ba5a46955b04c8cca61bd, type: 2}
@@ -3337,7 +3337,7 @@ Transform:
   m_GameObject: {fileID: 901607571}
   m_LocalRotation: {x: -0, y: -0.86679024, z: -0, w: 0.49867293}
   m_LocalPosition: {x: -13.77, y: 5.95, z: -9.83}
-  m_LocalScale: {x: 3.9499052, y: 3.5579026, z: 3.2324}
+  m_LocalScale: {x: 5.627825, y: 3.5579026, z: 3.2324}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 507228744}
@@ -3575,8 +3575,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: -0.2774069, y: 0.6454937, z: -0.27238536, w: -0.6574113}
-  m_LocalPosition: {x: 14.400066, y: 15.881248, z: -0.11926484}
+  m_LocalRotation: {x: -0.2764599, y: 0.6457999, z: -0.27138016, w: -0.65792507}
+  m_LocalPosition: {x: 13.030361, y: 17.466143, z: -0.42255905}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10920,7 +10920,7 @@ RectTransform:
   m_GameObject: {fileID: 1765926651}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.51}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1.1207, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 860921513}
@@ -10929,7 +10929,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -0.014}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1765926653
@@ -11468,8 +11468,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1938927743}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0.302, z: 0}
+  m_LocalScale: {x: 1, y: 1.8065999, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 567759601}

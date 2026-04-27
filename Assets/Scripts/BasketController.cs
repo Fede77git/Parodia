@@ -32,10 +32,12 @@ public class BasketController : MonoBehaviour
     public float chargeRate = 2f;
     public float dashForce = 30f;
     public float knockbackForce = 20f;
+    public float maxThrowDistance = 25f;
     private float currentShotForce = 0f;
     private float shotForceApplied = 0f;
     public float blockMoveTimer = 0f;
     private float pickupCooldown = 0f;
+    private Vector3 targetFlyPos;
 
     private Vector2 moveInput;
     private bool isShooting;
@@ -142,6 +144,24 @@ public class BasketController : MonoBehaviour
                 startFlyPos = PosOverHead.position;
                 shotForceApplied = Mathf.Max(0.1f, currentShotForce);
                 
+                Vector3 horizDir = Target.position - startFlyPos;
+                horizDir.y = 0;
+                float idealDist = horizDir.magnitude;
+                if (idealDist > 0.001f) horizDir.Normalize();
+                
+                float powerRatio = shotForceApplied / maxShotForce;
+                float actualDist = powerRatio * maxThrowDistance;
+                
+                if (actualDist >= idealDist)
+                {
+                    targetFlyPos = Target.position;
+                }
+                else
+                {
+                    targetFlyPos = startFlyPos + horizDir * actualDist;
+                    targetFlyPos.y = 0.5f; 
+                }
+
                 currentShotForce = 0f;
                 if (powerSlider != null)
                 {
@@ -168,9 +188,7 @@ public class BasketController : MonoBehaviour
             float duration = Mathf.Lerp(0.8f, 0.64f, shotForceApplied / maxShotForce);
             float t01 = T / duration;
 
-            Vector3 A = startFlyPos;
-            Vector3 B = Target.position;
-            Vector3 pos = Vector3.Lerp(A, B, t01);
+            Vector3 pos = Vector3.Lerp(startFlyPos, targetFlyPos, t01);
             float arcHeight = Mathf.Lerp(4f, 5.1f, shotForceApplied / maxShotForce);
             Vector3 arc = Vector3.up * arcHeight * Mathf.Sin(t01 * 3.14f);
 
