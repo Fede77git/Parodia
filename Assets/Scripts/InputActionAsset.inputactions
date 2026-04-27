@@ -925,6 +925,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Dash1",
+                    "type": "Button",
+                    "id": "12638a50-b5c0-429f-9b7e-6b42ea5fe44c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -993,6 +1002,17 @@
                     "action": "Shoot1",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0fb9c7ae-dcbb-443c-a839-eb3ba02c014c",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Dash1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -1013,6 +1033,15 @@
                     "name": "Shoot2",
                     "type": "Button",
                     "id": "c27057ef-9ee1-4b1f-bba2-c6f539d7a9d3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Dash2",
+                    "type": "Button",
+                    "id": "2fdf15b6-1772-4ad1-b91f-1141b26694e3",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -1083,6 +1112,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Shoot2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "18d269c8-20d5-4223-b237-452d10f93838",
+                    "path": "<Keyboard>/n",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Dash2",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

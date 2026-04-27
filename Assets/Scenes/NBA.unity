@@ -11358,6 +11358,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1257422732}
     - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
+      propertyPath: dashForce
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
       propertyPath: PosDribble
       value: 
       objectReference: {fileID: 1912483623}
@@ -11365,6 +11369,10 @@ PrefabInstance:
       propertyPath: chargeRate
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
+      propertyPath: dashAction
+      value: 
+      objectReference: {fileID: -7627242407845013657, guid: 778c679f2fe2f5c4486270cb3773159f, type: 3}
     - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
       propertyPath: moveAction
       value: 
@@ -11662,9 +11670,17 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
+      propertyPath: dashForce
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
       propertyPath: PosDribble
       value: 
       objectReference: {fileID: 1993095983}
+    - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
+      propertyPath: dashAction
+      value: 
+      objectReference: {fileID: 942137803077032811, guid: 778c679f2fe2f5c4486270cb3773159f, type: 3}
     - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
       propertyPath: moveAction
       value: 

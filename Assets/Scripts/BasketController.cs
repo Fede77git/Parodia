@@ -25,12 +25,17 @@ public class BasketController : MonoBehaviour
 
     public InputActionReference moveAction;
     public InputActionReference shootAction;
+    public InputActionReference dashAction;
    
     public Slider powerSlider;
     public float maxShotForce = 2f;
     public float chargeRate = 2f;
+    public float dashForce = 30f;
+    public float knockbackForce = 20f;
     private float currentShotForce = 0f;
     private float shotForceApplied = 0f;
+    public float blockMoveTimer = 0f;
+    private float pickupCooldown = 0f;
 
     private Vector2 moveInput;
     private bool isShooting;
@@ -57,16 +62,23 @@ public class BasketController : MonoBehaviour
     {
         if (moveAction != null) moveAction.action.Enable();
         if (shootAction != null) shootAction.action.Enable();
+        if (dashAction != null) dashAction.action.Enable();
     }
 
     private void OnDisable()
     {
         if (moveAction != null) moveAction.action.Disable();
         if (shootAction != null) shootAction.action.Disable();
+        if (dashAction != null) dashAction.action.Disable();
     }
 
     void Update()
     {
+        if (pickupCooldown > 0f)
+        {
+            pickupCooldown -= Time.deltaTime;
+        }
+
         if (moveAction != null && moveAction.action != null)
         {
             moveInput = moveAction.action.ReadValue<Vector2>();
@@ -75,6 +87,16 @@ public class BasketController : MonoBehaviour
         if (shootAction != null && shootAction.action != null)
         {
             isShooting = shootAction.action.IsPressed();
+        }
+
+        if (dashAction != null && dashAction.action != null)
+        {
+            if (dashAction.action.WasPressedThisFrame() && blockMoveTimer <= 0)
+            {
+                rb.velocity = Vector3.zero;
+                rb.AddForce(transform.forward * dashForce, ForceMode.Impulse);
+                blockMoveTimer = 0.5f;
+            }
         }
 
         if (IsBallInHands)
@@ -128,6 +150,15 @@ public class BasketController : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            Arms.localEulerAngles = Vector3.right * 0;
+            if (powerSlider != null && powerSlider.gameObject.activeSelf)
+            {
+                powerSlider.value = 0f;
+                powerSlider.gameObject.SetActive(false);
+            }
+        }
 
         wasShooting = isShooting; 
 
@@ -157,6 +188,11 @@ public class BasketController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (blockMoveTimer > 0)
+        {
+            blockMoveTimer -= Time.fixedDeltaTime;
+            return;
+        }
 
         Vector3 camForward = Camera.main.transform.forward;
         Vector3 camRight = Camera.main.transform.right;
@@ -187,9 +223,61 @@ public class BasketController : MonoBehaviour
         }
     }
 
+    public void DropBall()
+    {
+        if (IsBallInHands)
+        {
+            IsBallInHands = false;
+            isShooting = false;
+            wasShooting = false;
+            currentShotForce = 0f;
+            pickupCooldown = 1.5f;
+            if (powerSlider != null)
+            {
+                powerSlider.value = 0f;
+                powerSlider.gameObject.SetActive(false);
+            }
+            
+            Rigidbody ballRb = Ball.GetComponent<Rigidbody>();
+            if (ballRb != null)
+            {
+                ballRb.isKinematic = false;
+                ballRb.useGravity = true;
+            }
+            if (ballCollider != null)
+            {
+                ballCollider.isTrigger = false;
+            }
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        BasketController otherPlayer = collision.gameObject.GetComponent<BasketController>();
+        if (otherPlayer != null)
+        {
+
+            if (collision.relativeVelocity.magnitude > 2f && blockMoveTimer > 0) 
+            {
+                if (otherPlayer.IsBallInHands)
+                {
+                    otherPlayer.DropBall();
+                }
+                
+                Vector3 knockbackDir = (otherPlayer.transform.position - transform.position).normalized;
+                knockbackDir.y = 0; 
+                
+                Rigidbody otherRb = otherPlayer.GetComponent<Rigidbody>();
+                otherRb.velocity = Vector3.zero;
+                otherRb.AddForce(knockbackDir * knockbackForce, ForceMode.Impulse);
+                otherPlayer.blockMoveTimer = 0.5f;
+            }
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        if (!IsBallInHands && !IsBallFlying && other.CompareTag("Ball"))
+        if (!IsBallInHands && !IsBallFlying && other.CompareTag("Ball") && pickupCooldown <= 0f)
         {
             BasketController[] allPlayers = FindObjectsOfType<BasketController>();
             foreach (BasketController player in allPlayers)
