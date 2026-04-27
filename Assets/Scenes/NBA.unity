@@ -11362,6 +11362,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1912483623}
     - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
+      propertyPath: chargeRate
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
       propertyPath: moveAction
       value: 
       objectReference: {fileID: -2485130728304857325, guid: 778c679f2fe2f5c4486270cb3773159f, type: 3}
@@ -11377,6 +11381,10 @@ PrefabInstance:
       propertyPath: shootAction
       value: 
       objectReference: {fileID: 2056189224599033838, guid: 778c679f2fe2f5c4486270cb3773159f, type: 3}
+    - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
+      propertyPath: maxShotForce
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4994975396451487339, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -11673,6 +11681,10 @@ PrefabInstance:
       propertyPath: shootAction
       value: 
       objectReference: {fileID: 3942333776781788182, guid: 778c679f2fe2f5c4486270cb3773159f, type: 3}
+    - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
+      propertyPath: maxShotForce
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
       propertyPath: playerNumber
       value: 1

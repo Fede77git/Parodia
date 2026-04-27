@@ -134,13 +134,13 @@ public class BasketController : MonoBehaviour
         if (IsBallFlying)
         {
             T += Time.deltaTime;
-            float duration = Mathf.Lerp(0.8f, 0.6f, shotForceApplied / maxShotForce);
+            float duration = Mathf.Lerp(0.8f, 0.64f, shotForceApplied / maxShotForce);
             float t01 = T / duration;
 
             Vector3 A = startFlyPos;
             Vector3 B = Target.position;
             Vector3 pos = Vector3.Lerp(A, B, t01);
-            float arcHeight = Mathf.Lerp(4f, 5.5f, shotForceApplied / maxShotForce);
+            float arcHeight = Mathf.Lerp(4f, 5.1f, shotForceApplied / maxShotForce);
             Vector3 arc = Vector3.up * arcHeight * Mathf.Sin(t01 * 3.14f);
 
             Ball.position = pos + arc;
