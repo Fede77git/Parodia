@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem; 
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody))]
 public class BasketController : MonoBehaviour
@@ -25,6 +26,12 @@ public class BasketController : MonoBehaviour
     public InputActionReference moveAction;
     public InputActionReference shootAction;
    
+    public Slider powerSlider;
+    public float maxShotForce = 2f;
+    public float chargeRate = 2f;
+    private float currentShotForce = 0f;
+    private float shotForceApplied = 0f;
+
     private Vector2 moveInput;
     private bool isShooting;
     private bool wasShooting;
@@ -39,6 +46,11 @@ public class BasketController : MonoBehaviour
         ballCollider = Ball.GetComponent<Collider>();
         playerCollider = GetComponent<Collider>();
 
+        if (powerSlider != null)
+        {
+            powerSlider.gameObject.SetActive(false);
+            powerSlider.value = 0f;
+        }
     }
 
     private void OnEnable()
@@ -72,24 +84,48 @@ public class BasketController : MonoBehaviour
                 Ball.position = PosOverHead.position;
                 Arms.localEulerAngles = Vector3.right * 180;
                 
-               
                 Vector3 lookPos = Target.position;
                 lookPos.y = transform.position.y;
                 transform.LookAt(lookPos);
+
+                currentShotForce += chargeRate * Time.deltaTime;
+                currentShotForce = Mathf.Clamp(currentShotForce, 0f, maxShotForce);
+                if (powerSlider != null)
+                {
+                    powerSlider.gameObject.SetActive(true);
+                    powerSlider.value = currentShotForce / maxShotForce;
+                }
             }
             else
             {
                 Ball.position = PosDribble.position + Vector3.up * Mathf.Abs(Mathf.Sin(Time.time * 5));
                 Arms.localEulerAngles = Vector3.right * 0;
+
+                if (!wasShooting)
+                {
+                    currentShotForce = 0f;
+                    if (powerSlider != null)
+                    {
+                        powerSlider.value = 0f;
+                        powerSlider.gameObject.SetActive(false);
+                    }
+                }
             }
 
-         
             if (wasShooting && !isShooting)
             {
                 IsBallInHands = false;
                 IsBallFlying = true;
                 T = 0;
                 startFlyPos = PosOverHead.position;
+                shotForceApplied = Mathf.Max(0.1f, currentShotForce);
+                
+                currentShotForce = 0f;
+                if (powerSlider != null)
+                {
+                    powerSlider.value = 0f;
+                    powerSlider.gameObject.SetActive(false);
+                }
             }
         }
 
@@ -98,13 +134,14 @@ public class BasketController : MonoBehaviour
         if (IsBallFlying)
         {
             T += Time.deltaTime;
-            float duration = 0.66f;
+            float duration = Mathf.Lerp(0.8f, 0.6f, shotForceApplied / maxShotForce);
             float t01 = T / duration;
 
             Vector3 A = startFlyPos;
             Vector3 B = Target.position;
             Vector3 pos = Vector3.Lerp(A, B, t01);
-            Vector3 arc = Vector3.up * 5 * Mathf.Sin(t01 * 3.14f);
+            float arcHeight = Mathf.Lerp(4f, 5.5f, shotForceApplied / maxShotForce);
+            Vector3 arc = Vector3.up * arcHeight * Mathf.Sin(t01 * 3.14f);
 
             Ball.position = pos + arc;
 
@@ -132,7 +169,13 @@ public class BasketController : MonoBehaviour
 
         Vector3 direction = camForward * moveInput.y + camRight * moveInput.x;
         
-        Vector3 targetVelocity = direction * MoveSpeed;
+        float currentSpeed = MoveSpeed;
+        if (IsBallInHands && isShooting)
+        {
+            currentSpeed *= 0.5f;
+        }
+
+        Vector3 targetVelocity = direction * currentSpeed;
         targetVelocity.y = rb.velocity.y; 
         rb.velocity = targetVelocity;
 
