@@ -55,9 +55,15 @@ public class ScoreManager : MonoBehaviour
             if (ballInfo == null || ballInfo.hasScored) return;
 
 
-            if (ballInfo.realVelocity.y >= 0)
+            if (ballInfo.realVelocity.y > 0)
             {
+                ballInfo.passedFromBelow = true;
                 return; 
+            }
+
+            if (ballInfo.passedFromBelow)
+            {
+                return;
             }
 
             ballInfo.hasScored = true; 

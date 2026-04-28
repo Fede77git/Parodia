@@ -320,6 +320,7 @@ public class BasketController : MonoBehaviour
             {
                 bInfo.lastPlayerID = this.playerID;
                 bInfo.hasScored = false; 
+                bInfo.passedFromBelow = false;
             }
 
             Ball.GetComponent<Rigidbody>().isKinematic = true;

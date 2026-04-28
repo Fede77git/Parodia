@@ -6,6 +6,7 @@ public class BallInfo : MonoBehaviour
     public int lastPlayerID = 0;
     public bool hasScored = false;
     public bool isFalling = false;
+    public bool passedFromBelow = false;
     public Vector3 realVelocity;
     private Vector3 lastPos;
 
