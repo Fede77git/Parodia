@@ -152,7 +152,7 @@ public class BasketController : MonoBehaviour
                 float powerRatio = shotForceApplied / maxShotForce;
                 float actualDist = powerRatio * maxThrowDistance;
                 
-                if (actualDist >= idealDist)
+                if (Mathf.Abs(actualDist - idealDist) <= 2f)
                 {
                     targetFlyPos = Target.position;
                 }
