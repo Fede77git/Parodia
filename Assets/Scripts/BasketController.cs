@@ -142,7 +142,7 @@ public class BasketController : MonoBehaviour
                 IsBallFlying = true;
                 T = 0;
                 startFlyPos = PosOverHead.position;
-                shotForceApplied = Mathf.Max(0.1f, currentShotForce);
+                shotForceApplied = Mathf.Max(0.01f, currentShotForce);
                 
                 Vector3 horizDir = Target.position - startFlyPos;
                 horizDir.y = 0;
@@ -152,7 +152,9 @@ public class BasketController : MonoBehaviour
                 float powerRatio = shotForceApplied / maxShotForce;
                 float actualDist = powerRatio * maxThrowDistance;
                 
-                if (Mathf.Abs(actualDist - idealDist) <= 2f)
+                float tolerance = Mathf.Clamp(idealDist * 0.15f, 0.2f, 2f);
+                
+                if (Mathf.Abs(actualDist - idealDist) <= tolerance)
                 {
                     targetFlyPos = Target.position;
                 }
@@ -197,8 +199,15 @@ public class BasketController : MonoBehaviour
             if (t01 >= 1)
             {
                 IsBallFlying = false;
-                Ball.GetComponent<Rigidbody>().isKinematic = false;
-                Ball.GetComponent<Rigidbody>().useGravity = true;
+                Rigidbody ballRb = Ball.GetComponent<Rigidbody>();
+                ballRb.isKinematic = false;
+                ballRb.useGravity = true;
+                
+                Vector3 horizVel = (targetFlyPos - startFlyPos) / duration;
+                float vertVel = -arcHeight * Mathf.PI / duration;
+                
+                ballRb.velocity = new Vector3(horizVel.x, vertVel, horizVel.z) * 0.15f;
+                
                 ballCollider.isTrigger = false; 
             }
         }
