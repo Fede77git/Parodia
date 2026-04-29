@@ -1023,6 +1023,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effectObj: {fileID: 912409237462004110}
+  respawnHeight: 15
+  respawnAreaSize: 8
+  respawnDelay: 0.4
   scoreTextP1: {fileID: 12169562}
   scoreTextP2: {fileID: 1592434855}
   winText: {fileID: 722016881}
@@ -11140,6 +11143,7 @@ MonoBehaviour:
   lastPlayerID: 0
   hasScored: 0
   isFalling: 0
+  passedFromBelow: 0
   realVelocity: {x: 0, y: 0, z: 0}
 --- !u!1 &1536363599
 GameObject:

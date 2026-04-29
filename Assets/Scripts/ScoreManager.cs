@@ -8,6 +8,9 @@ public class ScoreManager : MonoBehaviour
 {
     public GameObject effectObj;
     
+    public float respawnHeight = 15f;
+    public float respawnAreaSize = 8f;
+    public float respawnDelay = 1.0f;
 
     public TMP_Text scoreTextP1;
     public TMP_Text scoreTextP2;
@@ -76,6 +79,7 @@ public class ScoreManager : MonoBehaviour
 
             UpdateUI();
             StartCoroutine(DisableEffect());
+            StartCoroutine(RespawnBallCoroutine(otherCollider.gameObject));
         }
     }
 
@@ -122,5 +126,29 @@ public class ScoreManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1.0f);
         if (effectObj != null) effectObj.SetActive(false);
+    }
+
+    private IEnumerator RespawnBallCoroutine(GameObject ball)
+    {
+        yield return new WaitForSeconds(respawnDelay);
+
+        Rigidbody ballRb = ball.GetComponent<Rigidbody>();
+        if (ballRb != null)
+        {
+            ballRb.velocity = Vector3.zero;
+            ballRb.angularVelocity = Vector3.zero;
+        }
+
+        float randomX = Random.Range(-respawnAreaSize, respawnAreaSize);
+        float randomZ = Random.Range(-respawnAreaSize, respawnAreaSize);
+        ball.transform.position = new Vector3(randomX, respawnHeight, randomZ);
+        
+        BallInfo bInfo = ball.GetComponent<BallInfo>();
+        if (bInfo != null)
+        {
+            bInfo.hasScored = false;
+            bInfo.passedFromBelow = false;
+            bInfo.lastPlayerID = 0;
+        }
     }
 }
