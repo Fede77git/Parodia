@@ -474,11 +474,18 @@ MonoBehaviour:
   PosOverHead: {fileID: 0}
   Arms: {fileID: 0}
   Target: {fileID: 0}
+  prefabChispas: {fileID: 0}
+  sonidoTopetazo: {fileID: 0}
   moveAction: {fileID: 0}
   shootAction: {fileID: 0}
+  dashAction: {fileID: 0}
   powerSlider: {fileID: 0}
   maxShotForce: 2
   chargeRate: 2
+  dashForce: 30
+  knockbackForce: 20
+  maxThrowDistance: 25
+  blockMoveTimer: 0
 --- !u!65 &65706843018012252
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -536,7 +543,7 @@ RectTransform:
   m_GameObject: {fileID: 605800838161652513}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.008, y: 0.03, z: 0.01}
+  m_LocalScale: {x: 0.008, y: 0.04, z: 0.01}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2653667100369072082}

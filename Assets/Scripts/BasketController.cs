@@ -203,7 +203,23 @@ public class BasketController : MonoBehaviour
             float arcHeight = Mathf.Lerp(4f, 5.1f, shotForceApplied / maxShotForce);
             Vector3 arc = Vector3.up * arcHeight * Mathf.Sin(t01 * 3.14f);
 
-            Ball.position = pos + arc;
+            Vector3 nextPos = pos + arc;
+            Vector3 dir = nextPos - Ball.position;
+            float dist = dir.magnitude;
+
+            if (dist > 0.001f)
+            {
+                if (Physics.SphereCast(Ball.position, 0.15f, dir.normalized, out RaycastHit hit, dist, Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore))
+                {
+                    if (hit.distance > 0f && hit.transform.root != transform.root && !hit.collider.CompareTag("Player") && !hit.collider.CompareTag("Ball"))
+                    {
+                        nextPos = Ball.position + dir.normalized * hit.distance;
+                        t01 = 1f; 
+                    }
+                }
+            }
+
+            Ball.position = nextPos;
 
             if (t01 >= 1)
             {
@@ -211,13 +227,12 @@ public class BasketController : MonoBehaviour
                 Rigidbody ballRb = Ball.GetComponent<Rigidbody>();
                 ballRb.isKinematic = false;
                 ballRb.useGravity = true;
+                ballCollider.isTrigger = false; 
                 
                 Vector3 horizVel = (targetFlyPos - startFlyPos) / duration;
                 float vertVel = -arcHeight * Mathf.PI / duration;
                 
                 ballRb.velocity = new Vector3(horizVel.x, vertVel, horizVel.z) * 0.15f;
-                
-                ballCollider.isTrigger = false; 
             }
         }
     }
