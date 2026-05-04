@@ -124,7 +124,7 @@ public class ScoreManager : MonoBehaviour
 
     private IEnumerator DisableEffect()
     {
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(2.0f);
         if (effectObj != null) effectObj.SetActive(false);
     }
 
