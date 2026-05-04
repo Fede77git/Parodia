@@ -305,7 +305,7 @@ public class BasketController : MonoBehaviour
                 if (audioSource != null && sonidoTopetazo != null)
                 {
                     audioSource.pitch = Random.Range(0.8f, 1.2f);
-                    audioSource.PlayOneShot(sonidoTopetazo);
+                    audioSource.PlayOneShot(sonidoTopetazo, 0.5f);
                 }
 
                 if (otherPlayer.IsBallInHands)
@@ -320,6 +320,9 @@ public class BasketController : MonoBehaviour
                 otherRb.velocity = Vector3.zero;
                 otherRb.AddForce(knockbackDir * knockbackForce, ForceMode.Impulse);
                 otherPlayer.blockMoveTimer = 0.5f;
+
+                rb.velocity = Vector3.zero;
+                rb.AddForce(-knockbackDir * (knockbackForce * 0.5f), ForceMode.Impulse);
             }
         }
     }
