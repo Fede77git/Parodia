@@ -14,6 +14,9 @@ public class BasketController : MonoBehaviour
     public Transform PosOverHead;
     public Transform Arms;
     public Transform Target;
+    public GameObject prefabChispas;
+    public AudioClip sonidoTopetazo;
+    private AudioSource audioSource;
    
     private bool IsBallInHands = false;
     private bool IsBallFlying = false;
@@ -47,6 +50,7 @@ public class BasketController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
 
         rb.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY; 
         
@@ -286,6 +290,19 @@ public class BasketController : MonoBehaviour
 
             if (collision.relativeVelocity.magnitude > 2f && blockMoveTimer > 0) 
             {
+                ContactPoint contacto = collision.GetContact(0);
+                if (prefabChispas != null)
+                {
+                    GameObject chispas = Instantiate(prefabChispas, contacto.point, Quaternion.LookRotation(contacto.normal));
+                    Destroy(chispas, 1f);
+                }
+
+                if (audioSource != null && sonidoTopetazo != null)
+                {
+                    audioSource.pitch = Random.Range(0.8f, 1.2f);
+                    audioSource.PlayOneShot(sonidoTopetazo);
+                }
+
                 if (otherPlayer.IsBallInHands)
                 {
                     otherPlayer.DropBall();
