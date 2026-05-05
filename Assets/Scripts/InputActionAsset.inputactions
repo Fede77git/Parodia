@@ -1127,6 +1127,142 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Player3xsx",
+            "id": "b6ad19c8-607e-4cea-a787-779cc4b4daa4",
+            "actions": [
+                {
+                    "name": "Move3",
+                    "type": "Value",
+                    "id": "686bc96e-1d2b-491b-8b5f-7ab30aeae365",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Shoot3",
+                    "type": "Button",
+                    "id": "15e40dbd-4c4b-451d-9201-42d543d8a607",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Dash3",
+                    "type": "Button",
+                    "id": "ef4f52c5-54db-4afc-be1f-7676baac804b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "d13e7ba9-5cba-40ce-b5bd-e23af8f24962",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dd787e85-94ee-427b-9de2-40ae17124892",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Shoot3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2579e4f4-22bf-459d-9fc4-7fd68528261a",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Dash3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Player4xsx",
+            "id": "0da2fa3c-8f1f-4cd8-929f-ed9da11990f7",
+            "actions": [
+                {
+                    "name": "Dash4",
+                    "type": "Button",
+                    "id": "d56dd928-b4a4-4467-ae94-555aa064e709",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Shoot4",
+                    "type": "Button",
+                    "id": "2242f012-9024-4e9b-b81a-b6714e53a366",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Move4",
+                    "type": "Value",
+                    "id": "11ce58ef-91ba-42e3-9bce-cf4571f67ab6",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "df587ef1-109a-4695-bebb-7d80e065b22f",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move4",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "de2a1b32-38d4-4712-9f03-090bfd43dbb9",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Shoot4",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6511fa40-7085-4852-981f-c21c7e179ac4",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Dash4",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [
