@@ -46,6 +46,8 @@ public class BasketController : MonoBehaviour
     private bool isShooting;
     private bool wasShooting;
     private Vector3 startFlyPos;
+    public bool isDashing = false;
+    public float hitCooldown = 0f;
 
     void Start()
     {
@@ -109,6 +111,8 @@ public class BasketController : MonoBehaviour
 
     void Update()
     {
+        if (hitCooldown > 0f) hitCooldown -= Time.deltaTime;
+
         if (pickupCooldown > 0f)
         {
             pickupCooldown -= Time.deltaTime;
@@ -131,6 +135,7 @@ public class BasketController : MonoBehaviour
                 rb.velocity = Vector3.zero;
                 rb.AddForce(transform.forward * dashForce, ForceMode.Impulse);
                 blockMoveTimer = 0.5f;
+                isDashing = true;
             }
         }
 
@@ -266,6 +271,10 @@ public class BasketController : MonoBehaviour
         if (blockMoveTimer > 0)
         {
             blockMoveTimer -= Time.fixedDeltaTime;
+            if (blockMoveTimer <= 0)
+            {
+                isDashing = false;
+            }
             return;
         }
 
@@ -332,7 +341,7 @@ public class BasketController : MonoBehaviour
         if (otherPlayer != null)
         {
 
-            if (collision.relativeVelocity.magnitude > 2f && blockMoveTimer > 0) 
+            if (collision.relativeVelocity.magnitude > 2f && isDashing && hitCooldown <= 0f && otherPlayer.hitCooldown <= 0f) 
             {
                 ContactPoint contacto = collision.GetContact(0);
                 if (prefabChispas != null)
@@ -352,16 +361,22 @@ public class BasketController : MonoBehaviour
                     otherPlayer.DropBall();
                 }
                 
-                Vector3 knockbackDir = (otherPlayer.transform.position - transform.position).normalized;
+                Vector3 knockbackDir = otherPlayer.transform.position - transform.position;
                 knockbackDir.y = 0; 
+                if (knockbackDir.magnitude < 0.01f) knockbackDir = transform.forward;
+                knockbackDir.Normalize();
+                
+                hitCooldown = 0.3f;
+                otherPlayer.hitCooldown = 0.3f;
                 
                 Rigidbody otherRb = otherPlayer.GetComponent<Rigidbody>();
                 otherRb.velocity = Vector3.zero;
-                otherRb.AddForce(knockbackDir * knockbackForce, ForceMode.Impulse);
+                otherRb.AddForce(knockbackDir * (knockbackForce * 0.7f), ForceMode.Impulse);
                 otherPlayer.blockMoveTimer = 0.5f;
+                otherPlayer.isDashing = false;
 
                 rb.velocity = Vector3.zero;
-                rb.AddForce(-knockbackDir * (knockbackForce * 0.5f), ForceMode.Impulse);
+                rb.AddForce(-knockbackDir * (knockbackForce * 0.3f), ForceMode.Impulse);
             }
         }
     }
