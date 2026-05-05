@@ -98,25 +98,25 @@ public class ScoreManager : MonoBehaviour
 
         if (scoreP1 >= 5)
         {
-            winText.text = "Player 1 wins!";
+            winText.text = "Green chicken wins!";
             isGameOver = true;
             Time.timeScale = 0f;
         }
         else if (scoreP2 >= 5)
         {
-            winText.text = "Player 2 wins!";
+            winText.text = "Purple chicken wins!";
             isGameOver = true;
             Time.timeScale = 0f;
         }
         else if (scoreP3 >= 5)
         {
-            winText.text = "Player 3 wins!";
+            winText.text = "Orange chicken wins!";
             isGameOver = true;
             Time.timeScale = 0f;
         }
         else if (scoreP4 >= 5)
         {
-            winText.text = "Player 4 wins!";
+            winText.text = "Red chicken wins!";
             isGameOver = true;
             Time.timeScale = 0f;
         }
@@ -129,19 +129,19 @@ public class ScoreManager : MonoBehaviour
 
         if (scoreP1 > scoreP2 && scoreP1 > scoreP3 && scoreP1 > scoreP4)
         {
-            winText.text = "Player 1 wins!";
+            winText.text = "Green chicken wins!";
         }
         else if (scoreP2 > scoreP1 && scoreP2 > scoreP3 && scoreP2 > scoreP4)
         {
-            winText.text = "Player 2 wins!";
+            winText.text = "Purple chicken wins!";
         }
         else if (scoreP3 > scoreP1 && scoreP3 > scoreP2 && scoreP3 > scoreP4)
         {
-            winText.text = "Player 3 wins!";
+            winText.text = "Orange chicken wins!";
         }
         else if (scoreP4 > scoreP1 && scoreP4 > scoreP2 && scoreP4 > scoreP3)
         {
-            winText.text = "Player 4 wins!";
+            winText.text = "Red chicken wins!";
         }
         else
         {
