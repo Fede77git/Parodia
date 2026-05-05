@@ -14308,6 +14308,7 @@ GameObject:
   - component: {fileID: 2023543938}
   - component: {fileID: 2023543937}
   - component: {fileID: 2023543939}
+  - component: {fileID: 2023543940}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Audio
@@ -14362,6 +14363,18 @@ MonoBehaviour:
   sfxSource: {fileID: 91931419}
   background: {fileID: 8300000, guid: 6ac4a73f690fded4eabe70930d327715, type: 3}
   ballNet: {fileID: 8300000, guid: 5090b77417168cd48a2e2588aa72d1d2, type: 3}
+--- !u!114 &2023543940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2023543936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2f669d212d37a646be126b66769fcb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2042133937
 GameObject:
   m_ObjectHideFlags: 0

@@ -71,9 +71,33 @@ public class BasketController : MonoBehaviour
 
     private void OnEnable()
     {
+        AssignDevice();
         if (moveAction != null) moveAction.action.Enable();
         if (shootAction != null) shootAction.action.Enable();
         if (dashAction != null) dashAction.action.Enable();
+    }
+
+    private void AssignDevice()
+    {
+        if (playerID >= 3)
+        {
+            int gamepadIndex = playerID - 3;
+            InputDevice[] deviceArray = new InputDevice[0];
+            if (Gamepad.all.Count > gamepadIndex)
+            {
+                deviceArray = new InputDevice[] { Gamepad.all[gamepadIndex] };
+            }
+            
+            var devices = new UnityEngine.InputSystem.Utilities.ReadOnlyArray<InputDevice>(deviceArray);
+            if (moveAction != null && moveAction.action != null && moveAction.action.actionMap != null) 
+                moveAction.action.actionMap.devices = devices;
+                
+            if (shootAction != null && shootAction.action != null && shootAction.action.actionMap != null) 
+                shootAction.action.actionMap.devices = devices;
+                
+            if (dashAction != null && dashAction.action != null && dashAction.action.actionMap != null) 
+                dashAction.action.actionMap.devices = devices;
+        }
     }
 
     private void OnDisable()
