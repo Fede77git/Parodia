@@ -14,12 +14,16 @@ public class ScoreManager : MonoBehaviour
 
     public TMP_Text scoreTextP1;
     public TMP_Text scoreTextP2;
+    public TMP_Text scoreTextP3;
+    public TMP_Text scoreTextP4;
 
     
     public TMP_Text winText;
 
     private int scoreP1 = 0;
     private int scoreP2 = 0;
+    private int scoreP3 = 0;
+    private int scoreP4 = 0;
 
     public static ScoreManager instance;
     public static bool isGameOver = false;
@@ -76,6 +80,8 @@ public class ScoreManager : MonoBehaviour
 
             if (ballInfo.lastPlayerID == 1) scoreP1++;
             else if (ballInfo.lastPlayerID == 2) scoreP2++;
+            else if (ballInfo.lastPlayerID == 3) scoreP3++;
+            else if (ballInfo.lastPlayerID == 4) scoreP4++;
 
             UpdateUI();
             StartCoroutine(DisableEffect());
@@ -87,16 +93,30 @@ public class ScoreManager : MonoBehaviour
     {
         if (scoreTextP1 != null) scoreTextP1.text = scoreP1.ToString();
         if (scoreTextP2 != null) scoreTextP2.text = scoreP2.ToString();
+        if (scoreTextP3 != null) scoreTextP3.text = scoreP3.ToString();
+        if (scoreTextP4 != null) scoreTextP4.text = scoreP4.ToString();
 
         if (scoreP1 >= 5)
         {
-            winText.text = "Green chicken wins!";
+            winText.text = "Player 1 wins!";
             isGameOver = true;
             Time.timeScale = 0f;
         }
         else if (scoreP2 >= 5)
         {
-            winText.text = "Purple chicken wins!";
+            winText.text = "Player 2 wins!";
+            isGameOver = true;
+            Time.timeScale = 0f;
+        }
+        else if (scoreP3 >= 5)
+        {
+            winText.text = "Player 3 wins!";
+            isGameOver = true;
+            Time.timeScale = 0f;
+        }
+        else if (scoreP4 >= 5)
+        {
+            winText.text = "Player 4 wins!";
             isGameOver = true;
             Time.timeScale = 0f;
         }
@@ -107,13 +127,21 @@ public class ScoreManager : MonoBehaviour
         if (isGameOver) return;
         isGameOver = true;
 
-        if (scoreP1 > scoreP2)
+        if (scoreP1 > scoreP2 && scoreP1 > scoreP3 && scoreP1 > scoreP4)
         {
-            winText.text = "Green chicken wins!";
+            winText.text = "Player 1 wins!";
         }
-        else if (scoreP2 > scoreP1)
+        else if (scoreP2 > scoreP1 && scoreP2 > scoreP3 && scoreP2 > scoreP4)
         {
-            winText.text = "Purple chicken wins!";
+            winText.text = "Player 2 wins!";
+        }
+        else if (scoreP3 > scoreP1 && scoreP3 > scoreP2 && scoreP3 > scoreP4)
+        {
+            winText.text = "Player 3 wins!";
+        }
+        else if (scoreP4 > scoreP1 && scoreP4 > scoreP2 && scoreP4 > scoreP3)
+        {
+            winText.text = "Player 4 wins!";
         }
         else
         {
