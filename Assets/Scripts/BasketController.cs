@@ -50,6 +50,7 @@ public class BasketController : MonoBehaviour
     public float hitCooldown = 0f;
     public float idleTimeout = 10f;
     private float lastInputTime;
+    public bool isAFK = false;
 
     void Start()
     {
@@ -153,13 +154,14 @@ public class BasketController : MonoBehaviour
         if (hasInputThisFrame)
         {
             lastInputTime = Time.time;
+            if (isAFK) SetAFKState(false);
         }
-        else if (Time.time - lastInputTime > idleTimeout)
+        else if (!isAFK && Time.time - lastInputTime > idleTimeout)
         {
-            if (IsBallInHands) DropBall();
-            Destroy(gameObject);
-            return;
+            SetAFKState(true);
         }
+
+        if (isAFK) return;
 
         if (IsBallInHands)
         {
@@ -290,6 +292,7 @@ public class BasketController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (isAFK) return;
         if (blockMoveTimer > 0)
         {
             blockMoveTimer -= Time.fixedDeltaTime;
@@ -326,6 +329,30 @@ public class BasketController : MonoBehaviour
 
             Quaternion targetRotation = Quaternion.LookRotation(direction);
             rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotation, Time.fixedDeltaTime * 15f));
+        }
+    }
+
+    private void SetAFKState(bool afk)
+    {
+        isAFK = afk;
+        if (afk && IsBallInHands) DropBall();
+        
+        Renderer[] renderers = GetComponentsInChildren<Renderer>();
+        foreach (Renderer r in renderers)
+        {
+            r.enabled = !afk;
+        }
+        
+        Collider[] colliders = GetComponentsInChildren<Collider>();
+        foreach (Collider c in colliders)
+        {
+            c.enabled = !afk;
+        }
+
+        if (rb != null)
+        {
+            rb.isKinematic = afk;
+            rb.detectCollisions = !afk;
         }
     }
 
