@@ -15,6 +15,8 @@ public class BotonHuevoAnimado : MonoBehaviour, IPointerEnterHandler, IPointerEx
     public AudioClip clickSound;
     private AudioSource audioSource;
     private Quaternion originalRotation;
+    private bool isHovering = false;
+    private float wiggleWeight = 0f;
 
     void Start()
     {
@@ -22,23 +24,32 @@ public class BotonHuevoAnimado : MonoBehaviour, IPointerEnterHandler, IPointerEx
         targetScale = originalScale;
         originalRotation = transform.localRotation;
         audioSource = GetComponent<AudioSource>();
+        UnityEngine.UI.Image img = GetComponent<UnityEngine.UI.Image>();
+        if (img != null)
+        {
+            img.alphaHitTestMinimumThreshold = 0.1f;
+        }
     }
 
     void Update()
     {
         transform.localScale = Vector3.Lerp(transform.localScale, targetScale, Time.deltaTime * scaleSpeed);
-        float angle = Mathf.Sin(Time.time * wiggleSpeed) * wiggleAngle;
+        
+        wiggleWeight = Mathf.Lerp(wiggleWeight, isHovering ? 1f : 0f, Time.deltaTime * scaleSpeed);
+        float angle = Mathf.Sin(Time.time * wiggleSpeed) * wiggleAngle * wiggleWeight;
         transform.localRotation = originalRotation * Quaternion.Euler(0, 0, angle);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
         targetScale = originalScale * hoverScaleMultiplier;
+        isHovering = true;
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         targetScale = originalScale;
+        isHovering = false;
     }
 
     public void OnPointerDown(PointerEventData eventData)

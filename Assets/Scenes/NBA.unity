@@ -2464,7 +2464,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 62, y: -308.4}
+  m_AnchoredPosition: {x: 69.99999, y: -308.4}
   m_SizeDelta: {x: 487.10928, y: 171.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &490294175
@@ -2881,7 +2881,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 62, y: 378}
+  m_AnchoredPosition: {x: 70, y: 378}
   m_SizeDelta: {x: 487.10928, y: 171.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &535930957
@@ -13845,7 +13845,7 @@ PrefabInstance:
       objectReference: {fileID: 1415353579}
     - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
       propertyPath: idleTimeout
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
       propertyPath: powerSlider
@@ -15407,7 +15407,7 @@ PrefabInstance:
       objectReference: {fileID: 1651580486}
     - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
       propertyPath: idleTimeout
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
       propertyPath: powerSlider
@@ -17607,7 +17607,7 @@ PrefabInstance:
       objectReference: {fileID: 1912483622}
     - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
       propertyPath: idleTimeout
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
       propertyPath: powerSlider
@@ -18079,7 +18079,7 @@ PrefabInstance:
       objectReference: {fileID: 1993095982}
     - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
       propertyPath: idleTimeout
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
       propertyPath: powerSlider
