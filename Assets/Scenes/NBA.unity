@@ -13844,6 +13844,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1415353579}
     - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
+      propertyPath: idleTimeout
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
       propertyPath: powerSlider
       value: 
       objectReference: {fileID: 1415353577}
@@ -15401,6 +15405,10 @@ PrefabInstance:
       propertyPath: PosOverHead
       value: 
       objectReference: {fileID: 1651580486}
+    - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
+      propertyPath: idleTimeout
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
       propertyPath: powerSlider
       value: 
@@ -17598,6 +17606,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1912483622}
     - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
+      propertyPath: idleTimeout
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
       propertyPath: powerSlider
       value: 
       objectReference: {fileID: 1912483624}
@@ -18065,6 +18077,10 @@ PrefabInstance:
       propertyPath: PosOverHead
       value: 
       objectReference: {fileID: 1993095982}
+    - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
+      propertyPath: idleTimeout
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
       propertyPath: powerSlider
       value: 

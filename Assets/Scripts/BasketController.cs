@@ -48,6 +48,8 @@ public class BasketController : MonoBehaviour
     private Vector3 startFlyPos;
     public bool isDashing = false;
     public float hitCooldown = 0f;
+    public float idleTimeout = 10f;
+    private float lastInputTime;
 
     void Start()
     {
@@ -69,6 +71,7 @@ public class BasketController : MonoBehaviour
             powerSlider.gameObject.SetActive(false);
             powerSlider.value = 0f;
         }
+        lastInputTime = Time.time;
     }
 
     private void OnEnable()
@@ -118,25 +121,44 @@ public class BasketController : MonoBehaviour
             pickupCooldown -= Time.deltaTime;
         }
 
+        bool hasInputThisFrame = false;
+
         if (moveAction != null && moveAction.action != null)
         {
             moveInput = moveAction.action.ReadValue<Vector2>();
+            if (moveInput != Vector2.zero) hasInputThisFrame = true;
         }
         
         if (shootAction != null && shootAction.action != null)
         {
             isShooting = shootAction.action.IsPressed();
+            if (isShooting) hasInputThisFrame = true;
         }
 
         if (dashAction != null && dashAction.action != null)
         {
-            if (dashAction.action.WasPressedThisFrame() && blockMoveTimer <= 0)
+            if (dashAction.action.WasPressedThisFrame())
             {
-                rb.velocity = Vector3.zero;
-                rb.AddForce(transform.forward * dashForce, ForceMode.Impulse);
-                blockMoveTimer = 0.5f;
-                isDashing = true;
+                hasInputThisFrame = true;
+                if (blockMoveTimer <= 0)
+                {
+                    rb.velocity = Vector3.zero;
+                    rb.AddForce(transform.forward * dashForce, ForceMode.Impulse);
+                    blockMoveTimer = 0.5f;
+                    isDashing = true;
+                }
             }
+        }
+
+        if (hasInputThisFrame)
+        {
+            lastInputTime = Time.time;
+        }
+        else if (Time.time - lastInputTime > idleTimeout)
+        {
+            if (IsBallInHands) DropBall();
+            Destroy(gameObject);
+            return;
         }
 
         if (IsBallInHands)
