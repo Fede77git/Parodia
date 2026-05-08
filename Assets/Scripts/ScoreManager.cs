@@ -98,25 +98,29 @@ public class ScoreManager : MonoBehaviour
 
         if (scoreP1 >= 5)
         {
-            winText.text = "Green chicken wins!";
+            winText.text = "Green chicken wins!\nPress R to rematch";
+            winText.color = Color.green;
             isGameOver = true;
             Time.timeScale = 0f;
         }
         else if (scoreP2 >= 5)
         {
-            winText.text = "Purple chicken wins!";
+            winText.text = "Purple chicken wins!\nPress R to rematch";
+            winText.color = new Color(0.5f, 0f, 0.5f);
             isGameOver = true;
             Time.timeScale = 0f;
         }
         else if (scoreP3 >= 5)
         {
-            winText.text = "Orange chicken wins!";
+            winText.text = "Orange chicken wins!\nPress R to rematch";
+            winText.color = new Color(1f, 0.5f, 0f);
             isGameOver = true;
             Time.timeScale = 0f;
         }
         else if (scoreP4 >= 5)
         {
-            winText.text = "Red chicken wins!";
+            winText.text = "Red chicken wins!\nPress R to rematch";
+            winText.color = Color.red;
             isGameOver = true;
             Time.timeScale = 0f;
         }
@@ -129,23 +133,28 @@ public class ScoreManager : MonoBehaviour
 
         if (scoreP1 > scoreP2 && scoreP1 > scoreP3 && scoreP1 > scoreP4)
         {
-            winText.text = "Green chicken wins!";
+            winText.text = "Green chicken wins!\nPress R to rematch";
+            winText.color = Color.green;
         }
         else if (scoreP2 > scoreP1 && scoreP2 > scoreP3 && scoreP2 > scoreP4)
         {
-            winText.text = "Purple chicken wins!";
+            winText.text = "Purple chicken wins!\nPress R to rematch";
+            winText.color = new Color(0.5f, 0f, 0.5f);
         }
         else if (scoreP3 > scoreP1 && scoreP3 > scoreP2 && scoreP3 > scoreP4)
         {
-            winText.text = "Orange chicken wins!";
+            winText.text = "Orange chicken wins!\nPress R to rematch";
+            winText.color = new Color(1f, 0.5f, 0f);
         }
         else if (scoreP4 > scoreP1 && scoreP4 > scoreP2 && scoreP4 > scoreP3)
         {
-            winText.text = "Red chicken wins!";
+            winText.text = "Red chicken wins!\nPress R to rematch";
+            winText.color = Color.red;
         }
         else
         {
-            winText.text = "It's a Draw!";
+            winText.text = "It's a Draw!\nPress R to rematch";
+            winText.color = Color.white;
         }
         Time.timeScale = 0f;
     }
