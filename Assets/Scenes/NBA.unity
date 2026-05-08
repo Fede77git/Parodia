@@ -2594,7 +2594,7 @@ RectTransform:
   - {fileID: 522712150}
   - {fileID: 1189148759}
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 90, y: -90, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2821,7 +2821,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7acacfcbac589646a109eb560a56db9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawner: {fileID: 5167478731958718866, guid: 6ce4124c95a8693418f92a6ee3b15e53, type: 3}
+  spawner: {fileID: 5496195415927438109, guid: d89186e5e6622c848bb189f66136dc3e, type: 3}
   stopSpawn: 0
   spawnTime: 8
   spawnDelay: 10
@@ -2833,7 +2833,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 511931790}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.04, y: 2, z: 7.52}
+  m_LocalPosition: {x: -7.04, y: 1.775, z: 7.52}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5019,7 +5019,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 33
+  m_fontStyle: 16
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -5403,6 +5403,11 @@ RectTransform:
   m_AnchoredPosition: {x: -387, y: -128.4}
   m_SizeDelta: {x: 487.10928, y: 171.2}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!23 &781112103 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1149551192565000717, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
+  m_PrefabInstance: {fileID: 1912483620}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &790559383
 GameObject:
   m_ObjectHideFlags: 0
@@ -8457,7 +8462,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 3
       scalar: 25
-      minScalar: 15
+      minScalar: 5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -12919,7 +12924,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1288571591}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: -0.85, z: -8}
+  m_LocalPosition: {x: 1, y: -1.89, z: -8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13980,6 +13985,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1415353579}
     - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
+      propertyPath: hatRenderer
+      value: 
+      objectReference: {fileID: 1523390488}
+    - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
       propertyPath: idleTimeout
       value: 10
       objectReference: {fileID: 0}
@@ -13992,6 +14001,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5449913173804938110, guid: 778c679f2fe2f5c4486270cb3773159f, type: 3}
     - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
+      propertyPath: dashCooldown
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
       propertyPath: maxShotForce
       value: 2
       objectReference: {fileID: 0}
@@ -14003,6 +14016,18 @@ PrefabInstance:
       propertyPath: sonidoTopetazo
       value: 
       objectReference: {fileID: 8300000, guid: d030da7b4f066794d9f79df01a3d947d, type: 3}
+    - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
+      propertyPath: dashReadyColor.b
+      value: 0.0990566
+      objectReference: {fileID: 0}
+    - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
+      propertyPath: dashReadyColor.g
+      value: 0.0990566
+      objectReference: {fileID: 0}
+    - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
+      propertyPath: dashReadyColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4994975396451487339, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -14346,6 +14371,11 @@ MonoBehaviour:
   isFalling: 0
   passedFromBelow: 0
   realVelocity: {x: 0, y: 0, z: 0}
+--- !u!23 &1523390488 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1149551192565000717, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
+  m_PrefabInstance: {fileID: 1415353576}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1536363599
 GameObject:
   m_ObjectHideFlags: 0
@@ -15407,7 +15437,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4292928448873590, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
       propertyPath: m_RootOrder
-      value: 19
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 4292928448873590, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -15542,6 +15572,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1651580486}
     - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
+      propertyPath: hatRenderer
+      value: 
+      objectReference: {fileID: 1716647313}
+    - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
       propertyPath: idleTimeout
       value: 10
       objectReference: {fileID: 0}
@@ -15554,6 +15588,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -11363457210660827, guid: 778c679f2fe2f5c4486270cb3773159f, type: 3}
     - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
+      propertyPath: dashCooldown
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
       propertyPath: maxShotForce
       value: 2
       objectReference: {fileID: 0}
@@ -15565,6 +15603,18 @@ PrefabInstance:
       propertyPath: sonidoTopetazo
       value: 
       objectReference: {fileID: 8300000, guid: d030da7b4f066794d9f79df01a3d947d, type: 3}
+    - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
+      propertyPath: dashReadyColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
+      propertyPath: dashReadyColor.g
+      value: 0.25943395
+      objectReference: {fileID: 0}
+    - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
+      propertyPath: dashReadyColor.r
+      value: 0.990566
+      objectReference: {fileID: 0}
     - target: {fileID: 4994975396451487339, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -16396,6 +16446,16 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1715829457}
   m_CullTransparentMesh: 1
+--- !u!23 &1716647313 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1149551192565000717, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
+  m_PrefabInstance: {fileID: 1651580483}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1722581118 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1149551192565000717, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
+  m_PrefabInstance: {fileID: 1993095980}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1722868544
 GameObject:
   m_ObjectHideFlags: 0
@@ -17064,7 +17124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7acacfcbac589646a109eb560a56db9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawner: {fileID: 5167478731958718866, guid: 6ce4124c95a8693418f92a6ee3b15e53, type: 3}
+  spawner: {fileID: 5496195415927438109, guid: d89186e5e6622c848bb189f66136dc3e, type: 3}
   stopSpawn: 0
   spawnTime: 5
   spawnDelay: 10
@@ -17076,7 +17136,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1800397561}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7, y: 2, z: -6.38}
+  m_LocalPosition: {x: 7, y: 1.82, z: -6.38}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -17742,6 +17802,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1912483622}
     - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
+      propertyPath: hatRenderer
+      value: 
+      objectReference: {fileID: 781112103}
+    - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
       propertyPath: idleTimeout
       value: 10
       objectReference: {fileID: 0}
@@ -17754,6 +17818,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2056189224599033838, guid: 778c679f2fe2f5c4486270cb3773159f, type: 3}
     - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
+      propertyPath: dashCooldown
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
       propertyPath: maxShotForce
       value: 2
       objectReference: {fileID: 0}
@@ -17765,6 +17833,18 @@ PrefabInstance:
       propertyPath: sonidoTopetazo
       value: 
       objectReference: {fileID: 8300000, guid: d030da7b4f066794d9f79df01a3d947d, type: 3}
+    - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
+      propertyPath: dashReadyColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
+      propertyPath: dashReadyColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
+      propertyPath: dashReadyColor.r
+      value: 0.16269541
+      objectReference: {fileID: 0}
     - target: {fileID: 4994975396451487339, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -18214,6 +18294,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1993095982}
     - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
+      propertyPath: hatRenderer
+      value: 
+      objectReference: {fileID: 1722581118}
+    - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
       propertyPath: idleTimeout
       value: 10
       objectReference: {fileID: 0}
@@ -18225,6 +18309,10 @@ PrefabInstance:
       propertyPath: shootAction
       value: 
       objectReference: {fileID: 3942333776781788182, guid: 778c679f2fe2f5c4486270cb3773159f, type: 3}
+    - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
+      propertyPath: dashCooldown
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
       propertyPath: maxShotForce
       value: 2
@@ -18241,6 +18329,18 @@ PrefabInstance:
       propertyPath: sonidoTopetazo
       value: 
       objectReference: {fileID: 8300000, guid: d030da7b4f066794d9f79df01a3d947d, type: 3}
+    - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
+      propertyPath: dashReadyColor.b
+      value: 0.96428585
+      objectReference: {fileID: 0}
+    - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
+      propertyPath: dashReadyColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
+      propertyPath: dashReadyColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4994975396451487339, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

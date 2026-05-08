@@ -18,6 +18,12 @@ public class BasketController : MonoBehaviour
     public AudioClip sonidoTopetazo;
     private AudioSource audioSource;
    
+    public Renderer hatRenderer;
+    [ColorUsage(true, true)] 
+    public Color dashReadyColor = Color.yellow;
+    private Material hatMaterial;
+    private bool wasDashReady = true;
+
     private bool IsBallInHands = false;
     private bool IsBallFlying = false;
     private float T = 0;
@@ -34,12 +40,14 @@ public class BasketController : MonoBehaviour
     public float maxShotForce = 2f;
     public float chargeRate = 2f;
     public float dashForce = 30f;
+    public float dashCooldown = 1f;
     public float knockbackForce = 20f;
     public float maxThrowDistance = 25f;
     private float currentShotForce = 0f;
     private float shotForceApplied = 0f;
     public float blockMoveTimer = 0f;
     private float pickupCooldown = 0f;
+    private float dashCooldownTimer = 0f;
     private Vector3 targetFlyPos;
 
     private Vector2 moveInput;
@@ -60,6 +68,13 @@ public class BasketController : MonoBehaviour
         {
             audioSource = gameObject.AddComponent<AudioSource>();
             audioSource.playOnAwake = false;
+        }
+
+        if (hatRenderer != null)
+        {
+            hatMaterial = hatRenderer.material;
+            hatMaterial.EnableKeyword("_EMISSION");
+            hatMaterial.SetColor("_EmissionColor", dashReadyColor);
         }
 
         rb.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionY; 
@@ -116,6 +131,21 @@ public class BasketController : MonoBehaviour
     void Update()
     {
         if (hitCooldown > 0f) hitCooldown -= Time.deltaTime;
+        
+        if (dashCooldownTimer > 0f) 
+        {
+            dashCooldownTimer -= Time.deltaTime;
+            if (hatRenderer != null && wasDashReady)
+            {
+                hatMaterial.SetColor("_EmissionColor", Color.black);
+                wasDashReady = false;
+            }
+        }
+        else if (hatRenderer != null && !wasDashReady)
+        {
+            hatMaterial.SetColor("_EmissionColor", dashReadyColor);
+            wasDashReady = true;
+        }
 
         if (pickupCooldown > 0f)
         {
@@ -141,12 +171,13 @@ public class BasketController : MonoBehaviour
             if (dashAction.action.WasPressedThisFrame())
             {
                 hasInputThisFrame = true;
-                if (blockMoveTimer <= 0)
+                if (blockMoveTimer <= 0 && dashCooldownTimer <= 0f)
                 {
                     rb.velocity = Vector3.zero;
                     rb.AddForce(transform.forward * dashForce, ForceMode.Impulse);
                     blockMoveTimer = 0.5f;
                     isDashing = true;
+                    dashCooldownTimer = dashCooldown;
                 }
             }
         }
