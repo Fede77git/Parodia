@@ -2824,7 +2824,7 @@ MonoBehaviour:
   spawner: {fileID: 5496195415927438109, guid: d89186e5e6622c848bb189f66136dc3e, type: 3}
   stopSpawn: 0
   spawnTime: 8
-  spawnDelay: 10
+  spawnDelay: 8
 --- !u!4 &511931792
 Transform:
   m_ObjectHideFlags: 0
@@ -17127,7 +17127,7 @@ MonoBehaviour:
   spawner: {fileID: 5496195415927438109, guid: d89186e5e6622c848bb189f66136dc3e, type: 3}
   stopSpawn: 0
   spawnTime: 5
-  spawnDelay: 10
+  spawnDelay: 8
 --- !u!4 &1800397563
 Transform:
   m_ObjectHideFlags: 0
