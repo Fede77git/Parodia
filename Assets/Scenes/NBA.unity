@@ -14018,15 +14018,15 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: d030da7b4f066794d9f79df01a3d947d, type: 3}
     - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
       propertyPath: dashReadyColor.b
-      value: 0.0990566
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
       propertyPath: dashReadyColor.g
-      value: 0.0990566
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
       propertyPath: dashReadyColor.r
-      value: 1
+      value: 0.9811321
       objectReference: {fileID: 0}
     - target: {fileID: 4994975396451487339, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -15609,11 +15609,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
       propertyPath: dashReadyColor.g
-      value: 0.25943395
+      value: 0.30874833
       objectReference: {fileID: 0}
     - target: {fileID: 4527478863055745232, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
       propertyPath: dashReadyColor.r
-      value: 0.990566
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4994975396451487339, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
       propertyPath: m_Materials.Array.data[0]
