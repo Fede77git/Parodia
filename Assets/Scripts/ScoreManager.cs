@@ -18,6 +18,11 @@ public class ScoreManager : MonoBehaviour
     public TMP_Text scoreTextP4;
 
     
+    public GameObject[] estrellasP1;
+    public GameObject[] estrellasP2;
+    public GameObject[] estrellasP3;
+    public GameObject[] estrellasP4;
+
     public TMP_Text winText;
 
     private int scoreP1 = 0;
@@ -47,6 +52,25 @@ public class ScoreManager : MonoBehaviour
         if (effectObj != null) effectObj.SetActive(false);
         winText.text = "";
         UpdateUI();
+        UpdateStarsUI();
+    }
+
+    private void UpdateStarsUI()
+    {
+        if (DatosPartidaManager.Instance == null) return;
+        ActivarEstrellas(estrellasP1, DatosPartidaManager.Instance.jugadores[0].estrellas);
+        ActivarEstrellas(estrellasP2, DatosPartidaManager.Instance.jugadores[1].estrellas);
+        ActivarEstrellas(estrellasP3, DatosPartidaManager.Instance.jugadores[2].estrellas);
+        ActivarEstrellas(estrellasP4, DatosPartidaManager.Instance.jugadores[3].estrellas);
+    }
+
+    private void ActivarEstrellas(GameObject[] arrayEstrellas, int cantidad)
+    {
+        if (arrayEstrellas == null) return;
+        for (int i = 0; i < arrayEstrellas.Length; i++)
+        {
+            if (arrayEstrellas[i] != null) arrayEstrellas[i].SetActive(i < cantidad);
+        }
     }
 
     private void Update()
@@ -71,7 +95,7 @@ public class ScoreManager : MonoBehaviour
 
             if (winText != null)
             {
-                winText.text = baseWinMessage + "\nPróxima Ronda en: " + Mathf.CeilToInt(Mathf.Max(0, transitionTimer)).ToString();
+                winText.text = baseWinMessage + "\nNext Round in: " + Mathf.CeilToInt(Mathf.Max(0, transitionTimer)).ToString();
             }
 
             if (transitionTimer <= 0)
@@ -136,14 +160,14 @@ public class ScoreManager : MonoBehaviour
     private void DeclararGanador(int winnerID, string text, Color color)
     {
         isGameOver = true;
-        winText.color = color;
+        winText.color = Color.white;
         RepartirRecompensas(winnerID);
 
         string rewards = "\n";
-        rewards += "P1: " + (winnerID == 0 ? "+1 Estrella | " : "") + "+" + (scoreP1 * 10) + " Monedas\n";
-        rewards += "P2: " + (winnerID == 1 ? "+1 Estrella | " : "") + "+" + (scoreP2 * 10) + " Monedas\n";
-        rewards += "P3: " + (winnerID == 2 ? "+1 Estrella | " : "") + "+" + (scoreP3 * 10) + " Monedas\n";
-        rewards += "P4: " + (winnerID == 3 ? "+1 Estrella | " : "") + "+" + (scoreP4 * 10) + " Monedas\n";
+        rewards += "P1: " + (winnerID == 0 ? "+1 Star | " : "") + "+" + (scoreP1 * 10) + " Coins\n";
+        rewards += "P2: " + (winnerID == 1 ? "+1 Star | " : "") + "+" + (scoreP2 * 10) + " Coins\n";
+        rewards += "P3: " + (winnerID == 2 ? "+1 Star | " : "") + "+" + (scoreP3 * 10) + " Coins\n";
+        rewards += "P4: " + (winnerID == 3 ? "+1 Star | " : "") + "+" + (scoreP4 * 10) + " Coins\n";
 
         baseWinMessage = text + rewards;
         winText.text = baseWinMessage;

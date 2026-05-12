@@ -17,12 +17,12 @@ public class TiendaJugadorUI : MonoBehaviour
 
         DatosJugador datos = DatosPartidaManager.Instance.jugadores[playerID];
         
-        if (textoMonedas != null) textoMonedas.text = "Monedas: " + datos.puntosMoneda;
+        if (textoMonedas != null) textoMonedas.text = "Coins: " + datos.puntosMoneda;
         
-        ActualizarTexto(textoVelocidad, "Velocidad", datos.nivelVelocidad);
-        ActualizarTexto(textoTamano, "Tamaño", datos.nivelTamano);
+        ActualizarTexto(textoVelocidad, "Speed", datos.nivelVelocidad);
+        ActualizarTexto(textoTamano, "Size", datos.nivelTamano);
         ActualizarTexto(textoDash, "Dash", datos.nivelCooldownDash);
-        ActualizarTexto(textoTiro, "Tiro", datos.nivelCooldownTiro);
+        ActualizarTexto(textoTiro, "Shoot", datos.nivelCooldownTiro);
     }
 
     private void ActualizarTexto(TextMeshProUGUI texto, string nombre, int nivel)
