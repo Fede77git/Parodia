@@ -23,4 +23,9 @@ public class TimerTienda : MonoBehaviour
             SceneManager.LoadScene(nombreSiguienteEscena);
         }
     }
+
+    public void SkipTimer()
+    {
+        tiempoRestante = 0f;
+    }
 }
