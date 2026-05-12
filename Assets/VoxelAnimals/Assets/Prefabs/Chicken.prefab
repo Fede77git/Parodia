@@ -401,6 +401,7 @@ GameObject:
   - component: {fileID: 4527478863055745232}
   - component: {fileID: 65706843018012252}
   - component: {fileID: 1217879839389354770}
+  - component: {fileID: 9138974829192572718}
   m_Layer: 0
   m_Name: Chicken
   m_TagString: Player
@@ -476,6 +477,8 @@ MonoBehaviour:
   Target: {fileID: 0}
   prefabChispas: {fileID: 0}
   sonidoTopetazo: {fileID: 0}
+  hatRenderer: {fileID: 0}
+  dashReadyColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   moveAction: {fileID: 0}
   shootAction: {fileID: 0}
   dashAction: {fileID: 0}
@@ -483,9 +486,14 @@ MonoBehaviour:
   maxShotForce: 2
   chargeRate: 2
   dashForce: 30
+  dashCooldown: 1
   knockbackForce: 20
   maxThrowDistance: 25
   blockMoveTimer: 0
+  isDashing: 0
+  hitCooldown: 0
+  idleTimeout: 10
+  isAFK: 0
 --- !u!65 &65706843018012252
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -515,6 +523,29 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 4
   m_CollisionDetection: 0
+--- !u!114 &9138974829192572718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1969419073538870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b787edc7e6a554397c661f95651eba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerID: 0
+  velocidadBase: 5
+  multiplicadorVelocidad: 1
+  escalaBase: {x: 1, y: 1, z: 1}
+  multiplicadorEscala: 0.2
+  masaBase: 1
+  multiplicadorMasa: 0.5
+  cooldownDashBase: 3
+  reduccionCooldownDash: 0.25
+  cooldownTiroBase: 2
+  reduccionCooldownTiro: 0.2
 --- !u!1 &605800838161652513
 GameObject:
   m_ObjectHideFlags: 0
