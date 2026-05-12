@@ -63,6 +63,7 @@ public class BasketController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
         audioSource = GetComponent<AudioSource>();
         if (audioSource == null)
         {
@@ -457,6 +458,8 @@ public class BasketController : MonoBehaviour
 
                 rb.velocity = Vector3.zero;
                 rb.AddForce(-knockbackDir * (knockbackForce * 0.3f), ForceMode.Impulse);
+                blockMoveTimer = 0.5f;
+                isDashing = false;
             }
         }
     }
@@ -465,6 +468,9 @@ public class BasketController : MonoBehaviour
     {
         if (!IsBallInHands && !IsBallFlying && other.CompareTag("Ball") && pickupCooldown <= 0f)
         {
+            BallInfo bInfo = other.GetComponent<BallInfo>();
+            if (bInfo != null && bInfo.hasScored) return;
+
             BasketController[] allPlayers = FindObjectsOfType<BasketController>();
             foreach (BasketController player in allPlayers)
             {
@@ -474,7 +480,6 @@ public class BasketController : MonoBehaviour
 
             IsBallInHands = true;
             
-            BallInfo bInfo = Ball.GetComponent<BallInfo>();
             if (bInfo != null) 
             {
                 bInfo.lastPlayerID = this.playerID;

@@ -1674,7 +1674,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4f40fc2659419e4fa1365274e345d01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tiempoRestante: 30
+  tiempoRestante: 20
   nombreSiguienteEscena: NBA
   textoTemporizador: {fileID: 1852704565}
 --- !u!4 &590394550
@@ -4888,7 +4888,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 30
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

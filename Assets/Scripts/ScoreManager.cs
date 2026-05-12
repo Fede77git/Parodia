@@ -140,6 +140,11 @@ public class ScoreManager : MonoBehaviour
             UpdateUI();
             StartCoroutine(DisableEffect());
             StartCoroutine(RespawnBallCoroutine(otherCollider.gameObject));
+
+            Renderer ballRenderer = otherCollider.GetComponent<Renderer>();
+            if (ballRenderer != null) ballRenderer.enabled = false;
+            TrailRenderer trail = otherCollider.GetComponent<TrailRenderer>();
+            if (trail != null) trail.enabled = false;
         }
     }
 
@@ -256,6 +261,11 @@ public class ScoreManager : MonoBehaviour
         float randomX = Random.Range(-respawnAreaSize, respawnAreaSize);
         float randomZ = Random.Range(-respawnAreaSize, respawnAreaSize);
         ball.transform.position = new Vector3(randomX, respawnHeight, randomZ);
+
+        Renderer ballRenderer = ball.GetComponent<Renderer>();
+        if (ballRenderer != null) ballRenderer.enabled = true;
+        TrailRenderer trail = ball.GetComponent<TrailRenderer>();
+        if (trail != null) { trail.Clear(); trail.enabled = true; }
         
         BallInfo bInfo = ball.GetComponent<BallInfo>();
         if (bInfo != null)
