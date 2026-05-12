@@ -36,6 +36,8 @@ public class ScoreManager : MonoBehaviour
     private float transitionTimer = 10f;
     private string baseWinMessage = "";
 
+    public float winnerTax = 0.5f;
+
     AudioManager audioManager;
 
     private void Awake()
@@ -161,13 +163,19 @@ public class ScoreManager : MonoBehaviour
     {
         isGameOver = true;
         winText.color = Color.white;
-        RepartirRecompensas(winnerID);
+        
+        int coinsP1 = CalcularMonedas(0, scoreP1, winnerID);
+        int coinsP2 = CalcularMonedas(1, scoreP2, winnerID);
+        int coinsP3 = CalcularMonedas(2, scoreP3, winnerID);
+        int coinsP4 = CalcularMonedas(3, scoreP4, winnerID);
+
+        RepartirRecompensas(winnerID, coinsP1, coinsP2, coinsP3, coinsP4);
 
         string rewards = "\n";
-        rewards += "P1: " + (winnerID == 0 ? "+1 Star | " : "") + "+" + (scoreP1 * 10) + " Coins\n";
-        rewards += "P2: " + (winnerID == 1 ? "+1 Star | " : "") + "+" + (scoreP2 * 10) + " Coins\n";
-        rewards += "P3: " + (winnerID == 2 ? "+1 Star | " : "") + "+" + (scoreP3 * 10) + " Coins\n";
-        rewards += "P4: " + (winnerID == 3 ? "+1 Star | " : "") + "+" + (scoreP4 * 10) + " Coins\n";
+        rewards += "P1: " + (winnerID == 0 ? "+1 Star | " : "") + "+" + coinsP1 + " Coins\n";
+        rewards += "P2: " + (winnerID == 1 ? "+1 Star | " : "") + "+" + coinsP2 + " Coins\n";
+        rewards += "P3: " + (winnerID == 2 ? "+1 Star | " : "") + "+" + coinsP3 + " Coins\n";
+        rewards += "P4: " + (winnerID == 3 ? "+1 Star | " : "") + "+" + coinsP4 + " Coins\n";
 
         baseWinMessage = text + rewards;
         winText.text = baseWinMessage;
@@ -175,7 +183,14 @@ public class ScoreManager : MonoBehaviour
         Time.timeScale = 0f;
     }
 
-    private void RepartirRecompensas(int winnerID)
+    private int CalcularMonedas(int pID, int score, int winnerID)
+    {
+        float monedasBase = score * 10f;
+        if (pID == winnerID) monedasBase *= (1f - winnerTax);
+        return Mathf.FloorToInt(monedasBase);
+    }
+
+    private void RepartirRecompensas(int winnerID, int coinsP1, int coinsP2, int coinsP3, int coinsP4)
     {
         if (DatosPartidaManager.Instance != null)
         {
@@ -187,10 +202,10 @@ public class ScoreManager : MonoBehaviour
                     isGameComplete = true;
                 }
             }
-            DatosPartidaManager.Instance.SumarMonedas(0, scoreP1 * 10);
-            DatosPartidaManager.Instance.SumarMonedas(1, scoreP2 * 10);
-            DatosPartidaManager.Instance.SumarMonedas(2, scoreP3 * 10);
-            DatosPartidaManager.Instance.SumarMonedas(3, scoreP4 * 10);
+            DatosPartidaManager.Instance.SumarMonedas(0, coinsP1);
+            DatosPartidaManager.Instance.SumarMonedas(1, coinsP2);
+            DatosPartidaManager.Instance.SumarMonedas(2, coinsP3);
+            DatosPartidaManager.Instance.SumarMonedas(3, coinsP4);
         }
     }
 
