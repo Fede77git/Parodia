@@ -27,6 +27,8 @@ public class ScoreManager : MonoBehaviour
 
     public static ScoreManager instance;
     public static bool isGameOver = false;
+    private float transitionTimer = 10f;
+    private string baseWinMessage = "";
 
     AudioManager audioManager;
 
@@ -47,10 +49,20 @@ public class ScoreManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        if (isGameOver)
         {
-            SceneManager.LoadScene("NBA");
-            Time.timeScale = 1f;
+            transitionTimer -= Time.unscaledDeltaTime;
+
+            if (winText != null)
+            {
+                winText.text = baseWinMessage + "\nPróxima Ronda en: " + Mathf.CeilToInt(Mathf.Max(0, transitionTimer)).ToString();
+            }
+
+            if (transitionTimer <= 0)
+            {
+                Time.timeScale = 1f;
+                SceneManager.LoadScene("Shop");
+            }
         }
     }
 
@@ -96,33 +108,42 @@ public class ScoreManager : MonoBehaviour
         if (scoreTextP3 != null) scoreTextP3.text = scoreP3.ToString();
         if (scoreTextP4 != null) scoreTextP4.text = scoreP4.ToString();
 
-        if (scoreP1 >= 5)
+        if (!isGameOver)
         {
-            winText.text = "Green chicken wins!\nPress R to rematch";
-            winText.color = Color.green;
-            isGameOver = true;
-            Time.timeScale = 0f;
+            if (scoreP1 >= 5) DeclararGanador(0, "Green chicken wins!", Color.green);
+            else if (scoreP2 >= 5) DeclararGanador(1, "Purple chicken wins!", new Color(0.5f, 0f, 0.5f));
+            else if (scoreP3 >= 5) DeclararGanador(2, "Orange chicken wins!", new Color(1f, 0.5f, 0f));
+            else if (scoreP4 >= 5) DeclararGanador(3, "Red chicken wins!", Color.red);
         }
-        else if (scoreP2 >= 5)
+    }
+
+    private void DeclararGanador(int winnerID, string text, Color color)
+    {
+        isGameOver = true;
+        winText.color = color;
+        RepartirRecompensas(winnerID);
+
+        string rewards = "\n";
+        rewards += "P1: " + (winnerID == 0 ? "+1 Estrella | " : "") + "+" + (scoreP1 * 10) + " Monedas\n";
+        rewards += "P2: " + (winnerID == 1 ? "+1 Estrella | " : "") + "+" + (scoreP2 * 10) + " Monedas\n";
+        rewards += "P3: " + (winnerID == 2 ? "+1 Estrella | " : "") + "+" + (scoreP3 * 10) + " Monedas\n";
+        rewards += "P4: " + (winnerID == 3 ? "+1 Estrella | " : "") + "+" + (scoreP4 * 10) + " Monedas\n";
+
+        baseWinMessage = text + rewards;
+        winText.text = baseWinMessage;
+
+        Time.timeScale = 0f;
+    }
+
+    private void RepartirRecompensas(int winnerID)
+    {
+        if (DatosPartidaManager.Instance != null)
         {
-            winText.text = "Purple chicken wins!\nPress R to rematch";
-            winText.color = new Color(0.5f, 0f, 0.5f);
-            isGameOver = true;
-            Time.timeScale = 0f;
-        }
-        else if (scoreP3 >= 5)
-        {
-            winText.text = "Orange chicken wins!\nPress R to rematch";
-            winText.color = new Color(1f, 0.5f, 0f);
-            isGameOver = true;
-            Time.timeScale = 0f;
-        }
-        else if (scoreP4 >= 5)
-        {
-            winText.text = "Red chicken wins!\nPress R to rematch";
-            winText.color = Color.red;
-            isGameOver = true;
-            Time.timeScale = 0f;
+            if (winnerID >= 0) DatosPartidaManager.Instance.SumarEstrellas(winnerID, 1);
+            DatosPartidaManager.Instance.SumarMonedas(0, scoreP1 * 10);
+            DatosPartidaManager.Instance.SumarMonedas(1, scoreP2 * 10);
+            DatosPartidaManager.Instance.SumarMonedas(2, scoreP3 * 10);
+            DatosPartidaManager.Instance.SumarMonedas(3, scoreP4 * 10);
         }
     }
 
@@ -133,30 +154,24 @@ public class ScoreManager : MonoBehaviour
 
         if (scoreP1 > scoreP2 && scoreP1 > scoreP3 && scoreP1 > scoreP4)
         {
-            winText.text = "Green chicken wins!\nPress R to rematch";
-            winText.color = Color.green;
+            DeclararGanador(0, "Green chicken wins!", Color.green);
         }
         else if (scoreP2 > scoreP1 && scoreP2 > scoreP3 && scoreP2 > scoreP4)
         {
-            winText.text = "Purple chicken wins!\nPress R to rematch";
-            winText.color = new Color(0.5f, 0f, 0.5f);
+            DeclararGanador(1, "Purple chicken wins!", new Color(0.5f, 0f, 0.5f));
         }
         else if (scoreP3 > scoreP1 && scoreP3 > scoreP2 && scoreP3 > scoreP4)
         {
-            winText.text = "Orange chicken wins!\nPress R to rematch";
-            winText.color = new Color(1f, 0.5f, 0f);
+            DeclararGanador(2, "Orange chicken wins!", new Color(1f, 0.5f, 0f));
         }
         else if (scoreP4 > scoreP1 && scoreP4 > scoreP2 && scoreP4 > scoreP3)
         {
-            winText.text = "Red chicken wins!\nPress R to rematch";
-            winText.color = Color.red;
+            DeclararGanador(3, "Red chicken wins!", Color.red);
         }
         else
         {
-            winText.text = "It's a Draw!\nPress R to rematch";
-            winText.color = Color.white;
+            DeclararGanador(-1, "It's a Draw!", Color.white);
         }
-        Time.timeScale = 0f;
     }
 
     private IEnumerator DisableEffect()
