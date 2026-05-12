@@ -13,6 +13,15 @@ public class TiendaJugadorUI : MonoBehaviour
 
     public Transform modeloPollo;
     public float multiplicadorEscalaVisual = 0.2f;
+    private Vector3 escalaBaseVisual;
+
+    private void Start()
+    {
+        if (modeloPollo != null)
+        {
+            escalaBaseVisual = modeloPollo.localScale;
+        }
+    }
 
     private void Update()
     {
@@ -27,10 +36,10 @@ public class TiendaJugadorUI : MonoBehaviour
         ActualizarTexto(textoDash, "Dash", datos.nivelCooldownDash);
         ActualizarTexto(textoTiro, "Shoot", datos.nivelCooldownTiro);
 
-        if (modeloPollo != null)
+        if (modeloPollo != null && escalaBaseVisual != Vector3.zero)
         {
-            float aumento = (datos.nivelTamano - 1) * multiplicadorEscalaVisual;
-            modeloPollo.localScale = Vector3.one + new Vector3(aumento, aumento, aumento);
+            float aumentoProporcional = 1f + ((datos.nivelTamano - 1) * multiplicadorEscalaVisual);
+            modeloPollo.localScale = escalaBaseVisual * aumentoProporcional;
         }
     }
 

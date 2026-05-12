@@ -939,6 +939,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChickenShop (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8819883516555374571, guid: f8b8eaab6f148f94d88fc2bff6e5dee8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8822334088249352363, guid: f8b8eaab6f148f94d88fc2bff6e5dee8, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -1082,6 +1086,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &453833693 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8822334088249352363, guid: f8b8eaab6f148f94d88fc2bff6e5dee8, type: 3}
+  m_PrefabInstance: {fileID: 353894376}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &494208180
 GameObject:
   m_ObjectHideFlags: 0
@@ -1843,6 +1852,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 642446790}
   m_CullTransparentMesh: 1
+--- !u!4 &685022147 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8822334088249352363, guid: f8b8eaab6f148f94d88fc2bff6e5dee8, type: 3}
+  m_PrefabInstance: {fileID: 1025676299}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &685402402
 GameObject:
   m_ObjectHideFlags: 0
@@ -2606,6 +2620,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChickenShop (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8819883516555374571, guid: f8b8eaab6f148f94d88fc2bff6e5dee8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8822334088249352363, guid: f8b8eaab6f148f94d88fc2bff6e5dee8, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -3124,7 +3142,7 @@ MonoBehaviour:
   textoTamano: {fileID: 552838685}
   textoDash: {fileID: 2077790538}
   textoTiro: {fileID: 303629561}
-  modeloPollo: {fileID: 0}
+  modeloPollo: {fileID: 1935710211}
   multiplicadorEscalaVisual: 0.2
 --- !u!1 &1140532321
 GameObject:
@@ -3431,6 +3449,10 @@ PrefabInstance:
     - target: {fileID: 8819883516555374571, guid: f8b8eaab6f148f94d88fc2bff6e5dee8, type: 3}
       propertyPath: m_Name
       value: ChickenShop (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8819883516555374571, guid: f8b8eaab6f148f94d88fc2bff6e5dee8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8822334088249352363, guid: f8b8eaab6f148f94d88fc2bff6e5dee8, type: 3}
       propertyPath: m_RootOrder
@@ -3913,8 +3935,13 @@ MonoBehaviour:
   textoTamano: {fileID: 739333894}
   textoDash: {fileID: 107302206}
   textoTiro: {fileID: 1110310636}
-  modeloPollo: {fileID: 0}
+  modeloPollo: {fileID: 1419035373}
   multiplicadorEscalaVisual: 0.2
+--- !u!4 &1419035373 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8822334088249352363, guid: f8b8eaab6f148f94d88fc2bff6e5dee8, type: 3}
+  m_PrefabInstance: {fileID: 1245823641}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1420544925
 GameObject:
   m_ObjectHideFlags: 0
@@ -4020,7 +4047,7 @@ MonoBehaviour:
   textoTamano: {fileID: 538148168}
   textoDash: {fileID: 854885243}
   textoTiro: {fileID: 903440744}
-  modeloPollo: {fileID: 0}
+  modeloPollo: {fileID: 453833693}
   multiplicadorEscalaVisual: 0.2
 --- !u!1 &1454274742
 GameObject:
@@ -4346,6 +4373,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChickenShop
       objectReference: {fileID: 0}
+    - target: {fileID: 8819883516555374571, guid: f8b8eaab6f148f94d88fc2bff6e5dee8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8822334088249352363, guid: f8b8eaab6f148f94d88fc2bff6e5dee8, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -4589,7 +4620,7 @@ MonoBehaviour:
   textoTamano: {fileID: 1919138792}
   textoDash: {fileID: 1053249828}
   textoTiro: {fileID: 1140532323}
-  modeloPollo: {fileID: 0}
+  modeloPollo: {fileID: 685022147}
   multiplicadorEscalaVisual: 0.2
 --- !u!1 &1723177929
 GameObject:
@@ -5165,6 +5196,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1919138790}
   m_CullTransparentMesh: 1
+--- !u!4 &1935710211 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8822334088249352363, guid: f8b8eaab6f148f94d88fc2bff6e5dee8, type: 3}
+  m_PrefabInstance: {fileID: 1543226010}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1977872348
 GameObject:
   m_ObjectHideFlags: 0
