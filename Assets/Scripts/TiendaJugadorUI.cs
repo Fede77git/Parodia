@@ -11,6 +11,9 @@ public class TiendaJugadorUI : MonoBehaviour
     public TextMeshProUGUI textoDash;
     public TextMeshProUGUI textoTiro;
 
+    public Transform modeloPollo;
+    public float multiplicadorEscalaVisual = 0.2f;
+
     private void Update()
     {
         if (DatosPartidaManager.Instance == null) return;
@@ -23,6 +26,12 @@ public class TiendaJugadorUI : MonoBehaviour
         ActualizarTexto(textoTamano, "Size", datos.nivelTamano);
         ActualizarTexto(textoDash, "Dash", datos.nivelCooldownDash);
         ActualizarTexto(textoTiro, "Shoot", datos.nivelCooldownTiro);
+
+        if (modeloPollo != null)
+        {
+            float aumento = (datos.nivelTamano - 1) * multiplicadorEscalaVisual;
+            modeloPollo.localScale = Vector3.one + new Vector3(aumento, aumento, aumento);
+        }
     }
 
     private void ActualizarTexto(TextMeshProUGUI texto, string nombre, int nivel)
