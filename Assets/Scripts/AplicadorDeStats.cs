@@ -41,11 +41,14 @@ public class AplicadorDeStats : MonoBehaviour
 
     private void AplicarStatsAScriptsExternos(int nivelVelocidad, int nivelDash, int nivelTiro)
     {
+        int nivelTamano = DatosPartidaManager.Instance.jugadores[playerID].nivelTamano;
+        float bonoEscalaVisual = (nivelTamano - 1) * multiplicadorEscala * 3f;
+
         BasketController controlador = GetComponent<BasketController>();
         
         if (controlador != null)
         {
-            controlador.MoveSpeed = velocidadBase + ((nivelVelocidad - 1) * multiplicadorVelocidad);
+            controlador.MoveSpeed = velocidadBase + ((nivelVelocidad - 1) * multiplicadorVelocidad) + bonoEscalaVisual;
             controlador.dashCooldown = Mathf.Max(0.1f, cooldownDashBase - ((nivelDash - 1) * reduccionCooldownDash));
             controlador.chargeRate = cooldownTiroBase + ((nivelTiro - 1) * reduccionCooldownTiro);
         }

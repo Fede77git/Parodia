@@ -27,6 +27,7 @@ public class ScoreManager : MonoBehaviour
 
     public static ScoreManager instance;
     public static bool isGameOver = false;
+    public static bool isGameComplete = false;
     private float transitionTimer = 10f;
     private string baseWinMessage = "";
 
@@ -36,6 +37,7 @@ public class ScoreManager : MonoBehaviour
     {
         instance = this;
         isGameOver = false;
+        isGameComplete = false;
         GameObject audioObj = GameObject.FindGameObjectWithTag("Audio");
         if(audioObj != null) audioManager = audioObj.GetComponent<AudioManager>();
     }
@@ -49,7 +51,21 @@ public class ScoreManager : MonoBehaviour
 
     private void Update()
     {
-        if (isGameOver)
+        if (isGameComplete)
+        {
+            if (winText != null)
+            {
+                winText.text = baseWinMessage + "\nCHAMPION OF CHICKENS!\nPress ESC to return to Main Menu";
+            }
+
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                Time.timeScale = 1f;
+                if (DatosPartidaManager.Instance != null) Destroy(DatosPartidaManager.Instance.gameObject);
+                SceneManager.LoadScene("MainMenu"); 
+            }
+        }
+        else if (isGameOver)
         {
             transitionTimer -= Time.unscaledDeltaTime;
 
@@ -139,7 +155,14 @@ public class ScoreManager : MonoBehaviour
     {
         if (DatosPartidaManager.Instance != null)
         {
-            if (winnerID >= 0) DatosPartidaManager.Instance.SumarEstrellas(winnerID, 1);
+            if (winnerID >= 0)
+            {
+                DatosPartidaManager.Instance.SumarEstrellas(winnerID, 1);
+                if (DatosPartidaManager.Instance.jugadores[winnerID].estrellas >= 3)
+                {
+                    isGameComplete = true;
+                }
+            }
             DatosPartidaManager.Instance.SumarMonedas(0, scoreP1 * 10);
             DatosPartidaManager.Instance.SumarMonedas(1, scoreP2 * 10);
             DatosPartidaManager.Instance.SumarMonedas(2, scoreP3 * 10);

@@ -4963,7 +4963,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -158, y: 239}
+  m_AnchoredPosition: {x: -158, y: -40}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 3, y: 0.5}
 --- !u!114 &722016881
@@ -5013,8 +5013,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 202.4
-  m_fontSizeBase: 202.4
+  m_fontSize: 200
+  m_fontSizeBase: 200
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -5049,7 +5049,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -1695.7037, w: 0}
+  m_margin: {x: -737.3526, y: 0, z: -2349.166, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -14084,6 +14084,10 @@ PrefabInstance:
       propertyPath: playerID
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 9138974829192572718, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
+      propertyPath: velocidadBase
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
 --- !u!114 &1415353577 stripped
@@ -15674,6 +15678,10 @@ PrefabInstance:
     - target: {fileID: 9138974829192572718, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
       propertyPath: playerID
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9138974829192572718, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
+      propertyPath: velocidadBase
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
@@ -17873,6 +17881,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: f124c6c7cb85d9647967d3de2253e1cf, type: 2}
+    - target: {fileID: 9138974829192572718, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
+      propertyPath: velocidadBase
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
 --- !u!4 &1912483621 stripped
@@ -18380,6 +18392,10 @@ PrefabInstance:
     - target: {fileID: 9138974829192572718, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
       propertyPath: playerID
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9138974829192572718, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
+      propertyPath: velocidadBase
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}

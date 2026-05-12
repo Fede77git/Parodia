@@ -174,7 +174,7 @@ public class BasketController : MonoBehaviour
                 if (blockMoveTimer <= 0 && dashCooldownTimer <= 0f)
                 {
                     rb.velocity = Vector3.zero;
-                    rb.AddForce(transform.forward * dashForce, ForceMode.Impulse);
+                    rb.AddForce(transform.forward * (dashForce * rb.mass), ForceMode.Impulse);
                     blockMoveTimer = 0.5f;
                     isDashing = true;
                     dashCooldownTimer = dashCooldown;
