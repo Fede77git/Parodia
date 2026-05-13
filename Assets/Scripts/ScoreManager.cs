@@ -81,14 +81,13 @@ public class ScoreManager : MonoBehaviour
         {
             if (winText != null)
             {
-                winText.text = baseWinMessage + "\nCHAMPION OF CHICKENS!\nPress ESC to return to Main Menu";
+                winText.text = baseWinMessage + "\nCHAMPION OF CHICKENS!\nPress ESC to see the Winner!";
             }
 
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 Time.timeScale = 1f;
-                if (DatosPartidaManager.Instance != null) Destroy(DatosPartidaManager.Instance.gameObject);
-                SceneManager.LoadScene("MainMenu"); 
+                SceneManager.LoadScene("WinnerScene"); 
             }
         }
         else if (isGameOver)
