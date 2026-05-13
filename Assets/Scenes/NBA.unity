@@ -1691,6 +1691,7 @@ MonoBehaviour:
   - {fileID: 1262312541}
   - {fileID: 1839654079}
   winText: {fileID: 722016881}
+  winnerTax: 0.5
 --- !u!1 &261897382
 GameObject:
   m_ObjectHideFlags: 0
@@ -19791,6 +19792,7 @@ GameObject:
   - component: {fileID: 2023543937}
   - component: {fileID: 2023543939}
   - component: {fileID: 2023543940}
+  - component: {fileID: 2023543941}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Audio
@@ -19855,6 +19857,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e2f669d212d37a646be126b66769fcb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2023543941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2023543936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23ba0b149ea0b004dba476af46f85cbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2026286410

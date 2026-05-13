@@ -147,6 +147,18 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
+    public void AddGoal(int playerID)
+    {
+        if (isGameOver) return;
+        
+        if (playerID == 1) scoreP1++;
+        else if (playerID == 2) scoreP2++;
+        else if (playerID == 3) scoreP3++;
+        else if (playerID == 4) scoreP4++;
+        
+        UpdateUI();
+    }
+
     private void UpdateUI()
     {
         if (scoreTextP1 != null) scoreTextP1.text = scoreP1.ToString();
