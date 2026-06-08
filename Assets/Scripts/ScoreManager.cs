@@ -130,6 +130,8 @@ public class ScoreManager : MonoBehaviour
 
             if (effectObj != null) effectObj.SetActive(true);
             if (audioManager != null) audioManager.PlaySFX(audioManager.ballNet);
+            
+            FindObjectOfType<GestorDePublico>()?.CelebrarGol();
 
             if (ballInfo.lastPlayerID == 1) scoreP1++;
             else if (ballInfo.lastPlayerID == 2) scoreP2++;
@@ -179,6 +181,11 @@ public class ScoreManager : MonoBehaviour
     {
         isGameOver = true;
         winText.color = Color.white;
+
+        int totalPoints = scoreP1 + scoreP2 + scoreP3 + scoreP4;
+        int publicoNuevo = Mathf.CeilToInt(totalPoints * 0.6f);
+        GestorDePublico.publicoTotalAcumulado += publicoNuevo;
+        FindObjectOfType<GestorDePublico>()?.GenerarPublico(publicoNuevo);
         
         int coinsP1 = CalcularMonedas(0, scoreP1, winnerID);
         int coinsP2 = CalcularMonedas(1, scoreP2, winnerID);
@@ -188,10 +195,10 @@ public class ScoreManager : MonoBehaviour
         RepartirRecompensas(winnerID, coinsP1, coinsP2, coinsP3, coinsP4);
 
         string rewards = "\n";
-        rewards += "P1: " + (winnerID == 0 ? "+1 Star | " : "") + "+" + coinsP1 + " Coins\n";
-        rewards += "P2: " + (winnerID == 1 ? "+1 Star | " : "") + "+" + coinsP2 + " Coins\n";
-        rewards += "P3: " + (winnerID == 2 ? "+1 Star | " : "") + "+" + coinsP3 + " Coins\n";
-        rewards += "P4: " + (winnerID == 3 ? "+1 Star | " : "") + "+" + coinsP4 + " Coins\n";
+        rewards += "P1: +" + coinsP1 + " Coins\n";
+        rewards += "P2: +" + coinsP2 + " Coins\n";
+        rewards += "P3: +" + coinsP3 + " Coins\n";
+        rewards += "P4: +" + coinsP4 + " Coins\n";
 
         baseWinMessage = text + rewards;
         winText.text = baseWinMessage;
@@ -210,14 +217,6 @@ public class ScoreManager : MonoBehaviour
     {
         if (DatosPartidaManager.Instance != null)
         {
-            if (winnerID >= 0)
-            {
-                DatosPartidaManager.Instance.SumarEstrellas(winnerID, 1);
-                if (DatosPartidaManager.Instance.jugadores[winnerID].estrellas >= 3)
-                {
-                    isGameComplete = true;
-                }
-            }
             DatosPartidaManager.Instance.SumarMonedas(0, coinsP1);
             DatosPartidaManager.Instance.SumarMonedas(1, coinsP2);
             DatosPartidaManager.Instance.SumarMonedas(2, coinsP3);
@@ -228,7 +227,19 @@ public class ScoreManager : MonoBehaviour
     public void CheckTimeOutWinner()
     {
         if (isGameOver) return;
-        isGameOver = true;
+
+        int totalPoints = scoreP1 + scoreP2 + scoreP3 + scoreP4;
+
+        if (totalPoints == 0)
+        {
+            isGameOver = true;
+            isGameComplete = true;
+            winText.color = Color.white;
+            baseWinMessage = "No points scored! Everyone wins!";
+            winText.text = baseWinMessage;
+            Time.timeScale = 0f;
+            return;
+        }
 
         if (scoreP1 > scoreP2 && scoreP1 > scoreP3 && scoreP1 > scoreP4)
         {

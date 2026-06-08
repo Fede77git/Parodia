@@ -6762,7 +6762,9 @@ MonoBehaviour:
   - {fileID: 1407259383}
   - {fileID: 701752387}
   radioDeSpawn: 3
-  fuerzaSalto: 10
+  fuerzaSalto: 5
+  fuerzaSaltoChico: 3
+  probabilidadSaltoChico: 0.02
 --- !u!4 &945703341
 Transform:
   m_ObjectHideFlags: 0
