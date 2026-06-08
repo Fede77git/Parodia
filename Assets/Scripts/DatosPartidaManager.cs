@@ -24,6 +24,7 @@ public class DatosPartidaManager : MonoBehaviour
     public static DatosPartidaManager Instance { get; private set; }
 
     public DatosJugador[] jugadores = new DatosJugador[4];
+    public int rondaActual = 1;
 
     private void Awake()
     {
@@ -81,5 +82,10 @@ public class DatosPartidaManager : MonoBehaviour
                     break;
             }
         }
+    }
+
+    public void AvanzarRonda()
+    {
+        rondaActual++;
     }
 }

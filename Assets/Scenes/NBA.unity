@@ -15995,7 +15995,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiFill: {fileID: 1135665477}
   uiText: {fileID: 6749147}
-  duration: 60
+  duration: 10
 --- !u!4 &1445073147
 Transform:
   m_ObjectHideFlags: 0
@@ -17336,7 +17336,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1629821293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21162,7 +21162,7 @@ AudioSource:
   m_GameObject: {fileID: 2007892010}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 8986b5c26f1f4b440bbe66d3b5304ef5, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 0.149
@@ -21371,6 +21371,7 @@ GameObject:
   - component: {fileID: 2023543939}
   - component: {fileID: 2023543940}
   - component: {fileID: 2023543941}
+  - component: {fileID: 2023543942}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Audio
@@ -21449,6 +21450,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23ba0b149ea0b004dba476af46f85cbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2023543942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2023543936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f33e4d674a2fc6e42a21567901799f9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fase1_Normal: {fileID: 24500006, guid: 8986b5c26f1f4b440bbe66d3b5304ef5, type: 2}
+  fase2_Ahogado: {fileID: 4381075682201914651, guid: 8986b5c26f1f4b440bbe66d3b5304ef5, type: 2}
+  fase3_Pesadilla: {fileID: -4080728844480850785, guid: 8986b5c26f1f4b440bbe66d3b5304ef5, type: 2}
+  faseFinal_Silencio: {fileID: 7380968412543409085, guid: 8986b5c26f1f4b440bbe66d3b5304ef5, type: 2}
+  tiempoDeTransicion: 3
 --- !u!1 &2026134602
 GameObject:
   m_ObjectHideFlags: 0

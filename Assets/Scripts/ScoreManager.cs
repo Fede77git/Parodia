@@ -55,6 +55,13 @@ public class ScoreManager : MonoBehaviour
         winText.text = "";
         UpdateUI();
         UpdateStarsUI();
+        
+        ControladorDeAudioNarrativo audioCtrl = FindObjectOfType<ControladorDeAudioNarrativo>();
+        if (audioCtrl != null)
+        {
+            int rondaFallback = DatosPartidaManager.Instance != null ? DatosPartidaManager.Instance.rondaActual : 1;
+            audioCtrl.ActualizarAudioPorRonda(rondaFallback);
+        }
     }
 
     private void UpdateStarsUI()
@@ -182,6 +189,11 @@ public class ScoreManager : MonoBehaviour
         isGameOver = true;
         winText.color = Color.white;
 
+        if (DatosPartidaManager.Instance != null)
+        {
+            DatosPartidaManager.Instance.AvanzarRonda();
+        }
+
         int totalPoints = scoreP1 + scoreP2 + scoreP3 + scoreP4;
         int publicoNuevo = Mathf.CeilToInt(totalPoints * 0.6f);
         GestorDePublico.publicoTotalAcumulado += publicoNuevo;
@@ -237,7 +249,9 @@ public class ScoreManager : MonoBehaviour
             winText.color = Color.white;
             baseWinMessage = "No points scored! Everyone wins!";
             winText.text = baseWinMessage;
-            Time.timeScale = 0f;
+            
+            FindObjectOfType<ControladorDeAudioNarrativo>()?.ActivarSilencioDeHuelga();
+            
             return;
         }
 
