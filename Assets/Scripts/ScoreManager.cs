@@ -33,7 +33,7 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager instance;
     public static bool isGameOver = false;
     public static bool isGameComplete = false;
-    private float transitionTimer = 10f;
+    private float transitionTimer = 5f;
     private string baseWinMessage = "";
 
     public float winnerTax = 0.5f;

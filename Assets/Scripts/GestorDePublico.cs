@@ -3,14 +3,14 @@ using UnityEngine;
 
 public class GestorDePublico : MonoBehaviour
 {
-    public GameObject prefabPelotita;
+    public GameObject prefabGatito;
     public Transform[] puntosDeSpawn;
-    public float radioDeSpawn = 5f;
+    public float radioDeSpawn = 2.5f;
     public float fuerzaSalto = 10f;
     public float fuerzaSaltoChico = 3f;
     public float probabilidadSaltoChico = 0.02f;
 
-    public static int publicoTotalAcumulado = 0;
+    public static int publicoTotalAcumulado = 2;
 
     private List<GameObject> publico = new List<GameObject>();
 
@@ -31,24 +31,49 @@ public class GestorDePublico : MonoBehaviour
 
         for (int i = 0; i < cantidad; i++)
         {
-            Transform puntoElegido = puntosDeSpawn[Random.Range(0, puntosDeSpawn.Length)];
-            Vector3 posicionSpawn = puntoElegido.position + Random.insideUnitSphere * radioDeSpawn;
+            Vector3 posicionSpawn = Vector3.zero;
+            Quaternion rotacionSpawn = Quaternion.identity;
+            bool posicionValida = false;
             
-            GameObject nuevaPelotita = Instantiate(prefabPelotita, posicionSpawn, Quaternion.identity);
+            for (int intento = 0; intento < 15; intento++)
+            {
+                Transform puntoElegido = puntosDeSpawn[Random.Range(0, puntosDeSpawn.Length)];
+                float offsetX = Random.Range(-radioDeSpawn, radioDeSpawn);
+                
+                posicionSpawn = puntoElegido.position + puntoElegido.right * offsetX;
+                rotacionSpawn = puntoElegido.rotation;
+                
+                posicionValida = true;
+                foreach (GameObject p in publico)
+                {
+                    if (p != null && Vector3.Distance(p.transform.position, posicionSpawn) < 1.2f)
+                    {
+                        posicionValida = false;
+                        break;
+                    }
+                }
+                
+                if (posicionValida) break;
+            }
+
+            if (!posicionValida) continue;
+
+            GameObject nuevoGatito = Instantiate(prefabGatito, posicionSpawn, rotacionSpawn);
             
-            Rigidbody rb = nuevaPelotita.GetComponent<Rigidbody>();
+            Rigidbody rb = nuevoGatito.GetComponent<Rigidbody>();
             if (rb != null)
             {
                 rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
             }
 
-            Renderer renderer = nuevaPelotita.GetComponent<Renderer>();
-            if (renderer != null)
+            Renderer[] renderers = nuevoGatito.GetComponentsInChildren<Renderer>();
+            Color colorAleatorio = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
+            foreach (Renderer r in renderers)
             {
-                renderer.material.color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
+                r.material.color = colorAleatorio;
             }
             
-            publico.Add(nuevaPelotita);
+            publico.Add(nuevoGatito);
         }
 
         Random.state = estadoAnterior;
