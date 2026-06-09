@@ -11,6 +11,7 @@ public class DialogoPollo : MonoBehaviour
     public string[] dialogosGolpe;
 
     public bool dialogosDesbloqueados = false;
+    public Vector3 offsetRotacion;
 
     private Coroutine rutinaActual;
 
@@ -20,11 +21,20 @@ public class DialogoPollo : MonoBehaviour
         StartCoroutine(BuclePensamientos());
     }
 
+    private void LateUpdate()
+    {
+        if (burbujaVisual != null && burbujaVisual.activeSelf && Camera.main != null)
+        {
+            Vector3 rotacionCamara = Camera.main.transform.rotation.eulerAngles;
+            burbujaVisual.transform.rotation = Quaternion.Euler(offsetRotacion.x, rotacionCamara.y + offsetRotacion.y, offsetRotacion.z);
+        }
+    }
+
     private IEnumerator BuclePensamientos()
     {
         while (true)
         {
-            float esperaAleatoria = Random.Range(10f, 20f);
+            float esperaAleatoria = Random.Range(3f, 6f);
             yield return new WaitForSeconds(esperaAleatoria);
 
             if (dialogosDesbloqueados && dialogosPensando != null && dialogosPensando.Length > 0 && burbujaVisual != null && !burbujaVisual.activeSelf)

@@ -64,6 +64,15 @@ public class ScoreManager : MonoBehaviour
             int rondaFallback = DatosPartidaManager.Instance != null ? DatosPartidaManager.Instance.rondaActual : 1;
             audioCtrl.ActualizarAudioPorRonda(rondaFallback);
         }
+
+        if (DatosPartidaManager.Instance != null && DatosPartidaManager.Instance.rondaActual >= 3)
+        {
+            DialogoPollo[] pollos = FindObjectsOfType<DialogoPollo>();
+            foreach (DialogoPollo p in pollos)
+            {
+                p.dialogosDesbloqueados = true;
+            }
+        }
     }
 
     private void UpdateStarsUI()

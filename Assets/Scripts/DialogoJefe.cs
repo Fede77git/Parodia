@@ -7,6 +7,11 @@ public class DialogoJefe : MonoBehaviour
     public GameObject burbujaVisual;
     public TextMeshProUGUI textoUI;
 
+    private void Start()
+    {
+        HablarInicioDeRonda();
+    }
+
     public void HablarInicioDeRonda()
     {
         if (burbujaVisual != null && textoUI != null)
@@ -19,7 +24,7 @@ public class DialogoJefe : MonoBehaviour
     {
         textoUI.text = "First one to score 5 wins";
         burbujaVisual.SetActive(true);
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(5f);
         burbujaVisual.SetActive(false);
     }
 }
