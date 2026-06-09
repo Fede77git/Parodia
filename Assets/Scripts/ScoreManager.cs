@@ -86,15 +86,27 @@ public class ScoreManager : MonoBehaviour
     {
         if (isGameComplete)
         {
-            if (winText != null)
-            {
-                winText.text = baseWinMessage + "\nCHAMPION OF CHICKENS!\nPress ESC to see the Winner!";
-            }
+            transitionTimer -= Time.unscaledDeltaTime;
 
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (transitionTimer <= 0)
             {
-                Time.timeScale = 1f;
-                SceneManager.LoadScene("WinnerScene"); 
+                if (winText != null)
+                {
+                    winText.text = "ESC to final scene";
+                }
+
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    Time.timeScale = 1f;
+                    SceneManager.LoadScene("WinnerScene"); 
+                }
+            }
+            else
+            {
+                if (winText != null)
+                {
+                    winText.text = "";
+                }
             }
         }
         else if (isGameOver)

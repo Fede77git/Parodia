@@ -11,6 +11,11 @@ public class EfectoMaquinaDeEscribir : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip sonidoTecla;
 
+    private void Start()
+    {
+        DispararMensaje();
+    }
+
     public void DispararMensaje()
     {
         if (textoUI != null)
@@ -28,6 +33,7 @@ public class EfectoMaquinaDeEscribir : MonoBehaviour
 
             if (audioSource != null && sonidoTecla != null && letra != ' ')
             {
+                audioSource.pitch = Random.Range(0.9f, 1.1f);
                 audioSource.PlayOneShot(sonidoTecla);
             }
 
