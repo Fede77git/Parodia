@@ -24,6 +24,7 @@ public class ScoreManager : MonoBehaviour
     public GameObject[] estrellasP4;
 
     public TMP_Text winText;
+    public GameObject panelFondoResultados;
 
     private int scoreP1 = 0;
     private int scoreP2 = 0;
@@ -52,6 +53,7 @@ public class ScoreManager : MonoBehaviour
     private void Start()
     {
         if (effectObj != null) effectObj.SetActive(false);
+        if (panelFondoResultados != null) panelFondoResultados.SetActive(false);
         winText.text = "";
         UpdateUI();
         UpdateStarsUI();
@@ -86,6 +88,7 @@ public class ScoreManager : MonoBehaviour
     {
         if (isGameComplete)
         {
+            if (panelFondoResultados != null) panelFondoResultados.SetActive(false);
             transitionTimer -= Time.unscaledDeltaTime;
 
             if (transitionTimer <= 0)
@@ -200,6 +203,7 @@ public class ScoreManager : MonoBehaviour
     {
         isGameOver = true;
         winText.color = Color.white;
+        if (panelFondoResultados != null) panelFondoResultados.SetActive(true);
 
         if (DatosPartidaManager.Instance != null)
         {
