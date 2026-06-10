@@ -1302,10 +1302,18 @@ MonoBehaviour:
   - Don't give them what they want
   - What happens if no one scores?
   - We don't have to fight...
-  - Trust me. Put the egg down
   - Winning just resets the nightmare
   - They want a winner. Let's give them nothing
   - Let the clock run out. Trust me
+  - If nobody wins, the giant cat loses
+  - If the score stays zero, we break the loop
+  - Every point extends our nightmare
+  - Fancy upgrades won't save us from their kitchen
+  - Better gear just makes the show last longer for them
+  - Enjoy the quiet while it lasts
+  - We are allies here... right?
+  - Keep your hands off the egg next round. Let it drop
+  - If the score stays at zero, the arena breaks
   dialogosGolpe: []
   dialogosDesbloqueados: 0
   offsetRotacion: {x: 0, y: 0, z: 0}
