@@ -547,7 +547,7 @@ MonoBehaviour:
   - What happens if no one scores?
   - We don't have to fight...
   - Look at them. We are just toys
-  - The scoreboard is our cage
+  - The score is our cage
   - Drop the egg... just drop it
   - Trust me. Put the egg down
   - Every point extends our nightmare
@@ -566,6 +566,7 @@ MonoBehaviour:
   - Stop! We can end this together!
   dialogosDesbloqueados: 0
   offsetRotacion: {x: 30, y: 0, z: 0}
+  multiplicadorEscalaBurbuja: 1
 --- !u!1 &605800838161652513
 GameObject:
   m_ObjectHideFlags: 0

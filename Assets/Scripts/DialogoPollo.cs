@@ -12,6 +12,7 @@ public class DialogoPollo : MonoBehaviour
 
     public bool dialogosDesbloqueados = false;
     public Vector3 offsetRotacion;
+    public float multiplicadorEscalaBurbuja = 1f;
 
     private Coroutine rutinaActual;
 
@@ -23,6 +24,11 @@ public class DialogoPollo : MonoBehaviour
         {
             escalaInicialBurbuja = burbujaVisual.transform.localScale;
             burbujaVisual.SetActive(false);
+        }
+
+        if (DatosPartidaManager.Instance != null && DatosPartidaManager.Instance.rondaActual >= 3)
+        {
+            dialogosDesbloqueados = true;
         }
     }
 
@@ -44,12 +50,22 @@ public class DialogoPollo : MonoBehaviour
             Vector3 rotacionCamara = Camera.main.transform.rotation.eulerAngles;
             burbujaVisual.transform.rotation = Quaternion.Euler(offsetRotacion.x, rotacionCamara.y + offsetRotacion.y, offsetRotacion.z);
             Vector3 pScale = transform.localScale;
-            burbujaVisual.transform.localScale = new Vector3(escalaInicialBurbuja.x / pScale.x, escalaInicialBurbuja.y / pScale.y, escalaInicialBurbuja.z / pScale.z);
+            burbujaVisual.transform.localScale = new Vector3(escalaInicialBurbuja.x / pScale.x, escalaInicialBurbuja.y / pScale.y, escalaInicialBurbuja.z / pScale.z) * multiplicadorEscalaBurbuja;
         }
     }
 
     private IEnumerator BuclePensamientos()
     {
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "Shop")
+        {
+            yield return new WaitForSeconds(Random.Range(0.5f, 1.5f));
+            if (dialogosDesbloqueados && dialogosPensando != null && dialogosPensando.Length > 0 && burbujaVisual != null && !burbujaVisual.activeSelf)
+            {
+                string textoElegido = dialogosPensando[Random.Range(0, dialogosPensando.Length)];
+                rutinaActual = StartCoroutine(MostrarDialogo(textoElegido, 5f));
+            }
+        }
+
         while (true)
         {
             float esperaAleatoria = Random.Range(8f, 15f);
