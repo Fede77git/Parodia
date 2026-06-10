@@ -13,6 +13,10 @@ public class EfectoMaquinaDeEscribir : MonoBehaviour
 
     private void Start()
     {
+        if (DatosPartidaManager.Instance != null && !string.IsNullOrEmpty(DatosPartidaManager.Instance.mensajeFinalAlternativo))
+        {
+            mensajeFinal = DatosPartidaManager.Instance.mensajeFinalAlternativo;
+        }
         DispararMensaje();
     }
 

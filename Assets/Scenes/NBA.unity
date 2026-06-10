@@ -2894,7 +2894,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 8
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 4096
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -2923,7 +2923,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -35.680992, y: -47.6064, z: -37.91503, w: -98.54386}
+  m_margin: {x: -35.680992, y: -64.6086, z: -37.91503, w: -98.54386}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -9113,7 +9113,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1189148759
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16207,7 +16207,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiFill: {fileID: 1135665477}
   uiText: {fileID: 6749147}
-  duration: 30
+  duration: 10
 --- !u!4 &1445073147
 Transform:
   m_ObjectHideFlags: 0
@@ -19979,8 +19979,8 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1831233826}
   m_LocalRotation: {x: -0, y: -0.99954706, z: -0, w: 0.030096889}
-  m_LocalPosition: {x: 0, y: 0, z: -0.042000204}
-  m_LocalScale: {x: 0.7269816, y: 0.53084874, z: 0.91161}
+  m_LocalPosition: {x: 0, y: 0, z: -0.057}
+  m_LocalScale: {x: 0.8426444, y: 0.6153068, z: 1.0566472}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 431824701}
@@ -19989,7 +19989,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: -176.551, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.654, y: 1.962}
+  m_AnchoredPosition: {x: -0.721, y: 2.084}
   m_SizeDelta: {x: 3, y: 3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1831233828
@@ -20629,7 +20629,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7959269026290013887, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
       propertyPath: dialogosDesbloqueados
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8194407816773413432, guid: aa3784adb6428184e991be2d60ee0cb2, type: 3}
       propertyPath: m_Layer

@@ -9,6 +9,7 @@ public class DatosJugador
     public int nivelTamano = 1;
     public int nivelCooldownTiro = 1;
     public int nivelCooldownDash = 1;
+    public bool estaEliminado = false;
 }
 
 public enum TipoEstadistica
@@ -25,6 +26,7 @@ public class DatosPartidaManager : MonoBehaviour
 
     public DatosJugador[] jugadores = new DatosJugador[4];
     public int rondaActual = 1;
+    public string mensajeFinalAlternativo = "";
 
     private void Awake()
     {

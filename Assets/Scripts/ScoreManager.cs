@@ -210,6 +210,9 @@ public class ScoreManager : MonoBehaviour
 
     private void DeclararGanador(int winnerID, string text, Color color)
     {
+        RealizarEjecucionesDeRonda();
+        if (isGameComplete) return;
+
         isGameOver = true;
         winText.color = Color.white;
         if (panelFondoResultados != null) panelFondoResultados.SetActive(true);
@@ -261,24 +264,75 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
+    private void RealizarEjecucionesDeRonda()
+    {
+        int ronda = DatosPartidaManager.Instance != null ? DatosPartidaManager.Instance.rondaActual : 1;
+        if (ronda >= 5)
+        {
+            BasketController[] allPlayers = FindObjectsOfType<BasketController>();
+            int aliveCount = 0;
+
+            foreach (BasketController player in allPlayers)
+            {
+                int playerScore = 0;
+                if (player.playerID == 1) playerScore = scoreP1;
+                else if (player.playerID == 2) playerScore = scoreP2;
+                else if (player.playerID == 3) playerScore = scoreP3;
+                else if (player.playerID == 4) playerScore = scoreP4;
+
+                if (playerScore == 0)
+                {
+                    if (DatosPartidaManager.Instance != null && player.playerID >= 1 && player.playerID <= 4)
+                    {
+                        DatosPartidaManager.Instance.jugadores[player.playerID - 1].estaEliminado = true;
+                    }
+                    Destroy(player.gameObject);
+                }
+                else
+                {
+                    aliveCount++;
+                }
+            }
+
+            if (aliveCount <= 1)
+            {
+                isGameOver = true;
+                isGameComplete = true;
+
+                if (DatosPartidaManager.Instance != null)
+                {
+                    DatosPartidaManager.Instance.mensajeFinalAlternativo = "You survived. But you are just another clown in their circus.";
+                }
+
+                FindObjectOfType<ControladorDeAudioNarrativo>()?.ActivarSilencioDeHuelga();
+            }
+        }
+    }
+
     public void CheckTimeOutWinner()
     {
         if (isGameOver) return;
 
         int totalPoints = scoreP1 + scoreP2 + scoreP3 + scoreP4;
+        int ronda = DatosPartidaManager.Instance != null ? DatosPartidaManager.Instance.rondaActual : 1;
 
         if (totalPoints == 0)
         {
             isGameOver = true;
             isGameComplete = true;
-            winText.color = Color.white;
-            baseWinMessage = "No points scored! Everyone wins!";
-            winText.text = baseWinMessage;
             
+            if (DatosPartidaManager.Instance != null)
+            {
+                DatosPartidaManager.Instance.mensajeFinalAlternativo = "The few stopped fighting. The masses were left without a circus.";
+            }
+
             FindObjectOfType<ControladorDeAudioNarrativo>()?.ActivarSilencioDeHuelga();
             
             return;
         }
+
+        RealizarEjecucionesDeRonda();
+        if (isGameComplete) return;
 
         if (scoreP1 > scoreP2 && scoreP1 > scoreP3 && scoreP1 > scoreP4)
         {

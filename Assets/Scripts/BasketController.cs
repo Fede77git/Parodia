@@ -62,6 +62,21 @@ public class BasketController : MonoBehaviour
 
     void Start()
     {
+        if (DatosPartidaManager.Instance != null && playerID >= 1 && playerID <= 4)
+        {
+            if (DatosPartidaManager.Instance.jugadores[playerID - 1].estaEliminado)
+            {
+                Renderer[] renderers = GetComponentsInChildren<Renderer>();
+                foreach (Renderer r in renderers) { r.enabled = false; }
+                Collider[] colliders = GetComponentsInChildren<Collider>();
+                foreach (Collider c in colliders) { c.enabled = false; }
+                Rigidbody rbody = GetComponent<Rigidbody>();
+                if (rbody != null) { rbody.isKinematic = true; rbody.detectCollisions = false; }
+                this.enabled = false;
+                return;
+            }
+        }
+
         rb = GetComponent<Rigidbody>();
         rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
         audioSource = GetComponent<AudioSource>();
