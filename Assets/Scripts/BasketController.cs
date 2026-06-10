@@ -76,6 +76,10 @@ public class BasketController : MonoBehaviour
                 DialogoPollo dialogo = GetComponent<DialogoPollo>();
                 if (dialogo != null) { Destroy(dialogo); }
 
+                if (powerSlider != null) { powerSlider.gameObject.SetActive(false); }
+                Canvas[] canvases = GetComponentsInChildren<Canvas>();
+                foreach (Canvas cv in canvases) { cv.enabled = false; }
+
                 this.enabled = false;
                 return;
             }
@@ -411,6 +415,12 @@ public class BasketController : MonoBehaviour
         {
             dialogo.enabled = !afk;
         }
+
+        Canvas[] canvases = GetComponentsInChildren<Canvas>();
+        foreach (Canvas cv in canvases)
+        {
+            cv.enabled = !afk;
+        }
     }
 
     public void DropBall()
@@ -524,6 +534,14 @@ public class BasketController : MonoBehaviour
             ballCollider.isTrigger = true;
             
             Ball.position = PosDribble.position;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (powerSlider != null && powerSlider.gameObject != null)
+        {
+            Destroy(powerSlider.gameObject);
         }
     }
 }

@@ -332,7 +332,7 @@ public class ScoreManager : MonoBehaviour
             FindObjectOfType<ControladorDeAudioNarrativo>()?.ActivarSilencioDeHuelga();
             transitionTimer = 10f;
             FindObjectOfType<CamaraCinematica>()?.HacerZoomAlJefe();
-            FindObjectOfType<DialogoJefe>()?.HablarFinalDeRonda("No blood. No entertainment... You chose solidarity over survival. The circus is over");
+            FindObjectOfType<DialogoJefe>()?.HablarFinalDeRonda("No blood. No entertainment... You chose solidarity over survival. The circus is over.");
             
             return;
         }

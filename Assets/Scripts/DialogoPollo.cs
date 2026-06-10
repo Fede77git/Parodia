@@ -52,13 +52,13 @@ public class DialogoPollo : MonoBehaviour
     {
         while (true)
         {
-            float esperaAleatoria = Random.Range(3f, 6f);
+            float esperaAleatoria = Random.Range(8f, 15f);
             yield return new WaitForSeconds(esperaAleatoria);
 
             if (dialogosDesbloqueados && dialogosPensando != null && dialogosPensando.Length > 0 && burbujaVisual != null && !burbujaVisual.activeSelf)
             {
                 string textoElegido = dialogosPensando[Random.Range(0, dialogosPensando.Length)];
-                rutinaActual = StartCoroutine(MostrarDialogo(textoElegido, 3f));
+                rutinaActual = StartCoroutine(MostrarDialogo(textoElegido, 5f));
             }
         }
     }
@@ -75,7 +75,7 @@ public class DialogoPollo : MonoBehaviour
             }
 
             string textoElegido = dialogosGolpe[Random.Range(0, dialogosGolpe.Length)];
-            rutinaActual = StartCoroutine(MostrarDialogo(textoElegido, 2f));
+            rutinaActual = StartCoroutine(MostrarDialogo(textoElegido, 3.5f));
         }
     }
 

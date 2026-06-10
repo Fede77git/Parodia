@@ -540,11 +540,30 @@ MonoBehaviour:
   burbujaVisual: {fileID: 7033928091750531556}
   textoUI: {fileID: 778051801582502169}
   dialogosPensando:
-  - hey hey hey hey hey hey hey
-  - sidsadjsdjdjsdj
+  - Why are we doing this?
+  - If we stop... does it end?
+  - They are just laughing at us
+  - Don't give them what they want
+  - What happens if no one scores?
+  - We don't have to fight...
+  - Look at them. We are just toys
+  - The scoreboard is our cage
+  - Drop the egg... just drop it
+  - Trust me. Put the egg down
+  - Every point extends our nightmare
+  - Winning just resets the nightmare
+  - They want a winner. Let's give them nothing
+  - Let the clock run out. Trust me
   dialogosGolpe:
-  - auch
-  - why you hitting me
+  - Stop! It hurts!
+  - Why are you hitting me?
+  - We are on the same side!
+  - Is this what you want?!
+  - Please, no more...
+  - Don't let them win
+  - We are better than this!
+  - They want us to destroy each other
+  - Stop! We can end this together!
   dialogosDesbloqueados: 0
   offsetRotacion: {x: 30, y: 0, z: 0}
 --- !u!1 &605800838161652513
@@ -1703,7 +1722,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.39999962}
+  m_AnchoredPosition: {x: 0, y: 0.46}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6633466788555310453
@@ -1768,7 +1787,7 @@ MonoBehaviour:
   m_fontSizeMin: 50
   m_fontSizeMax: 80
   m_fontStyle: 0
-  m_HorizontalAlignment: 8
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 4096
   m_textAlignment: 65535
   m_characterSpacing: 0
