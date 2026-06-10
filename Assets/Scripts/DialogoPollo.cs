@@ -15,10 +15,26 @@ public class DialogoPollo : MonoBehaviour
 
     private Coroutine rutinaActual;
 
+    private Vector3 escalaInicialBurbuja;
+
     private void Start()
     {
-        if (burbujaVisual != null) burbujaVisual.SetActive(false);
+        if (burbujaVisual != null) 
+        {
+            escalaInicialBurbuja = burbujaVisual.transform.localScale;
+            burbujaVisual.SetActive(false);
+        }
+    }
+
+    private void OnEnable()
+    {
         StartCoroutine(BuclePensamientos());
+    }
+
+    private void OnDisable()
+    {
+        if (burbujaVisual != null) burbujaVisual.SetActive(false);
+        StopAllCoroutines();
     }
 
     private void LateUpdate()
@@ -27,6 +43,8 @@ public class DialogoPollo : MonoBehaviour
         {
             Vector3 rotacionCamara = Camera.main.transform.rotation.eulerAngles;
             burbujaVisual.transform.rotation = Quaternion.Euler(offsetRotacion.x, rotacionCamara.y + offsetRotacion.y, offsetRotacion.z);
+            Vector3 pScale = transform.localScale;
+            burbujaVisual.transform.localScale = new Vector3(escalaInicialBurbuja.x / pScale.x, escalaInicialBurbuja.y / pScale.y, escalaInicialBurbuja.z / pScale.z);
         }
     }
 

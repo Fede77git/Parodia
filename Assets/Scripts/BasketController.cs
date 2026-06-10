@@ -72,6 +72,10 @@ public class BasketController : MonoBehaviour
                 foreach (Collider c in colliders) { c.enabled = false; }
                 Rigidbody rbody = GetComponent<Rigidbody>();
                 if (rbody != null) { rbody.isKinematic = true; rbody.detectCollisions = false; }
+                
+                DialogoPollo dialogo = GetComponent<DialogoPollo>();
+                if (dialogo != null) { Destroy(dialogo); }
+
                 this.enabled = false;
                 return;
             }
@@ -400,6 +404,12 @@ public class BasketController : MonoBehaviour
         {
             rb.isKinematic = afk;
             rb.detectCollisions = !afk;
+        }
+
+        DialogoPollo dialogo = GetComponent<DialogoPollo>();
+        if (dialogo != null)
+        {
+            dialogo.enabled = !afk;
         }
     }
 

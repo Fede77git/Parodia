@@ -17,6 +17,13 @@ public class TiendaJugadorUI : MonoBehaviour
 
     private void Start()
     {
+        if (DatosPartidaManager.Instance != null && DatosPartidaManager.Instance.jugadores[playerID].estaEliminado)
+        {
+            if (modeloPollo != null) modeloPollo.gameObject.SetActive(false);
+            gameObject.SetActive(false);
+            return;
+        }
+
         if (modeloPollo != null)
         {
             escalaBaseVisual = modeloPollo.localScale;

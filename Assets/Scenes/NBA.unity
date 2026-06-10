@@ -16207,7 +16207,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiFill: {fileID: 1135665477}
   uiText: {fileID: 6749147}
-  duration: 10
+  duration: 40
 --- !u!4 &1445073147
 Transform:
   m_ObjectHideFlags: 0
