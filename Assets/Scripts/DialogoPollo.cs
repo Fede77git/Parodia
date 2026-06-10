@@ -65,6 +65,8 @@ public class DialogoPollo : MonoBehaviour
 
     public void RecibirGolpe()
     {
+        if (Random.value > 0.3f) return;
+
         if (dialogosDesbloqueados && dialogosGolpe != null && dialogosGolpe.Length > 0 && burbujaVisual != null && textoUI != null)
         {
             if (rutinaActual != null)

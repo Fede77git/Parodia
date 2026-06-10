@@ -466,6 +466,12 @@ public class BasketController : MonoBehaviour
                 {
                     otherPlayer.DropBall();
                 }
+
+                DialogoPollo miDialogo = GetComponent<DialogoPollo>();
+                if (miDialogo != null && miDialogo.enabled) miDialogo.RecibirGolpe();
+
+                DialogoPollo otroDialogo = otherPlayer.GetComponent<DialogoPollo>();
+                if (otroDialogo != null && otroDialogo.enabled) otroDialogo.RecibirGolpe();
                 
                 Vector3 knockbackDir = otherPlayer.transform.position - transform.position;
                 knockbackDir.y = 0; 

@@ -34,7 +34,7 @@ public class DialogoJefe : MonoBehaviour
         }
 
         burbujaVisual.SetActive(true);
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(8f);
         burbujaVisual.SetActive(false);
     }
 }
