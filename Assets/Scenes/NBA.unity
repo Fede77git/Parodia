@@ -1881,6 +1881,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effectObj: {fileID: 711277919}
+  prefabMuerteVFX: {fileID: 4593184484909914552, guid: 2e1e9506f5904a64b81744324fb7cd50, type: 3}
   respawnHeight: 15
   respawnAreaSize: 8
   respawnDelay: 0.4

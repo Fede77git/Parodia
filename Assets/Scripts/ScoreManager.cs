@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class ScoreManager : MonoBehaviour
 {
     public GameObject effectObj;
+    public GameObject prefabMuerteVFX;
     
     public float respawnHeight = 15f;
     public float respawnAreaSize = 8f;
@@ -285,6 +286,11 @@ public class ScoreManager : MonoBehaviour
                     if (DatosPartidaManager.Instance != null && player.playerID >= 1 && player.playerID <= 4)
                     {
                         DatosPartidaManager.Instance.jugadores[player.playerID - 1].estaEliminado = true;
+                    }
+                    if (prefabMuerteVFX != null)
+                    {
+                        GameObject vfx = Instantiate(prefabMuerteVFX, player.transform.position, Quaternion.identity);
+                        Destroy(vfx, 3f);
                     }
                     Destroy(player.gameObject);
                 }
