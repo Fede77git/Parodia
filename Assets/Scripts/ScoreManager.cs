@@ -305,6 +305,8 @@ public class ScoreManager : MonoBehaviour
                 }
 
                 FindObjectOfType<ControladorDeAudioNarrativo>()?.ActivarSilencioDeHuelga();
+                transitionTimer = 10f;
+                FindObjectOfType<DialogoJefe>()?.HablarFinalDeRonda("You survived just to keep playing my game. Was it worth it?");
             }
         }
     }
@@ -327,6 +329,8 @@ public class ScoreManager : MonoBehaviour
             }
 
             FindObjectOfType<ControladorDeAudioNarrativo>()?.ActivarSilencioDeHuelga();
+            transitionTimer = 10f;
+            FindObjectOfType<DialogoJefe>()?.HablarFinalDeRonda("No blood. No entertainment... You chose solidarity over survival. The circus is over");
             
             return;
         }

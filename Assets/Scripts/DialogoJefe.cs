@@ -37,4 +37,21 @@ public class DialogoJefe : MonoBehaviour
         yield return new WaitForSeconds(8f);
         burbujaVisual.SetActive(false);
     }
+
+    public void HablarFinalDeRonda(string mensaje)
+    {
+        if (burbujaVisual != null && textoUI != null)
+        {
+            StopAllCoroutines();
+            StartCoroutine(MostrarDialogoEspecial(mensaje, 8f));
+        }
+    }
+
+    private IEnumerator MostrarDialogoEspecial(string mensaje, float tiempo)
+    {
+        textoUI.text = mensaje;
+        burbujaVisual.SetActive(true);
+        yield return new WaitForSeconds(tiempo);
+        burbujaVisual.SetActive(false);
+    }
 }
