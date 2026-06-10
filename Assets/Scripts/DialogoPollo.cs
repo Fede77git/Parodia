@@ -65,7 +65,7 @@ public class DialogoPollo : MonoBehaviour
 
     public void RecibirGolpe()
     {
-        if (Random.value > 0.3f) return;
+        if (Random.value > 0.6f) return;
 
         if (dialogosDesbloqueados && dialogosGolpe != null && dialogosGolpe.Length > 0 && burbujaVisual != null && textoUI != null)
         {
@@ -75,7 +75,7 @@ public class DialogoPollo : MonoBehaviour
             }
 
             string textoElegido = dialogosGolpe[Random.Range(0, dialogosGolpe.Length)];
-            rutinaActual = StartCoroutine(MostrarDialogo(textoElegido, 3.5f));
+            rutinaActual = StartCoroutine(MostrarDialogo(textoElegido, 4f));
         }
     }
 
