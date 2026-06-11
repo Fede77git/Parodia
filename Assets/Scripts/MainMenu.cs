@@ -7,6 +7,7 @@ public class MainMenu : MonoBehaviour
 {
     public void EscenaJuego()
     {
+        PlayerPrefs.DeleteAll();
         SceneManager.LoadScene("NBA");
     }
 
